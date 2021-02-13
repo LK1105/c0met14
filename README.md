@@ -1,2 +1,3 @@
 # c0met14
-iOS14 jailbreak utility with a SSH
+c0met iOS 14.0 - 14.3 jailbreak toolkit based on cicuta_virosa
+

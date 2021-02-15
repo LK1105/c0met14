@@ -5,8 +5,8 @@ This jailbreak is by the community, and was developed open source.
 
 ### Currently implemented: 
 setuid(0); <br />
-granted .root
+granted .root<br />
 sandbox custom r/w perms.
 
 ## View from App
-<img src="UI.jpg">
+<img src="UI.jpg" style="height: 1492; width: 678;">

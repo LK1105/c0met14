@@ -6,5 +6,7 @@ This jailbreak is by the community, and was developed open source.
 ### Currently implemented: 
 setuid(0); <br />
 granted .root
+sandbox custom r/w perms.
 
-### Our current aim is to grant sandbox r/w access and do our stuff.
+## View from App
+<img src="UI.jpg">

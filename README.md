@@ -1,6 +1,7 @@
 # c0met14
-[smiley](c0m.png){:height="36px" width="36px"}.
-c0met iOS 14.0 - 14.3 jailbreak toolkit based on cicuta_virosa
+[smile]: UI.png
+{: height="36px" width="36px"}
+
 
 This jailbreak is by the community, and was developed open source.
 

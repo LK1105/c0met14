@@ -8,6 +8,14 @@ setuid(0); <br />
 granted .root<br />
 sandbox custom r/w perms.<br />
 posix_spawn ret 0
+amfid_slot patch
+
+#### Output <br />
+amfid_slot - > 16549200728742792240Cannot spray rthdr at 0. Error: 9 <br />
+Cannot spray rthdr at 0. Error: 9 <br />
+
+amfid_slot - > 16549200728742792240prison break :slight_smile: <br />
+... <br />
 
 # Special Thanks to
 @maverickdev1 - utility development<br />

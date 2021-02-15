@@ -1,5 +1,5 @@
 # c0met14
-<img src="c0m.png">
+
 
 This jailbreak is by the community, and was developed open source.
 

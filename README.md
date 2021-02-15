@@ -9,5 +9,9 @@ granted .root<br />
 sandbox custom r/w perms.
 
 ## View from App
-<img src="UI.png" alt="drawing" style="width:80px;"/>
-![drawing](UI.png){ width=50% }
+Here is an inline ![smiley](smiley.png){:height="36px" width="36px"}.
+
+And here is a referenced ![smile]
+
+[smile]: c0m.png
+{: height="36px" width="36px"}

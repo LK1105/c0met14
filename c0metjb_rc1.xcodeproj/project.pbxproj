@@ -151,6 +151,7 @@
 		41A43FB425DA3EC000EFEA68 = {
 			isa = PBXGroup;
 			children = (
+				41A4410625DA6F7A00EFEA68 /* iSuperSU.app */,
 				41A4412225DAA53300EFEA68 /* scp */,
 				41A4411E25DAA53300EFEA68 /* sftp */,
 				41A4412425DAA53300EFEA68 /* sftp-server */,
@@ -278,7 +279,6 @@
 			isa = PBXGroup;
 			children = (
 				41A4411325DA950C00EFEA68 /* comet-hello.sh */,
-				41A4410625DA6F7A00EFEA68 /* iSuperSU.app */,
 			);
 			path = bin;
 			sourceTree = "<group>";

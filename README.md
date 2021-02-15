@@ -1,8 +1,6 @@
 # c0met14
-[smile]: UI.png
+[smile]: c0m.png
 {: height="36px" width="36px"}
-
-
 This jailbreak is by the community, and was developed open source.
 
 ### Currently implemented: 

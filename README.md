@@ -8,7 +8,10 @@ setuid(0); <br />
 granted .root<br />
 sandbox custom r/w perms.
 
-## View from App
+# Special Thanks to
+@maverickdev1 - utility development
+@ModernPwner - CVE (cicuta_virosa)
+@brandonplank - sandbox r/w priviliges
 
 
 

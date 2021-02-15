@@ -9,4 +9,5 @@ granted .root<br />
 sandbox custom r/w perms.
 
 ## View from App
-<img src="UI.png" alt="drawing" style="width:200px;"/>
+<img src="UI.png" alt="drawing" style="width:80px;"/>
+![drawing](UI.png){ width=50% }

@@ -9,4 +9,4 @@ granted .root<br />
 sandbox custom r/w perms.
 
 ## View from App
-<img src="UI.jpg" style="height: 1492; width: 678;">
+<img src="UI.jpg" style="height: 942; width: 378;">

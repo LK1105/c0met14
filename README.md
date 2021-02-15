@@ -14,5 +14,5 @@ sandbox custom r/w perms.
 @brandonplank - sandbox r/w priviliges
 
 
-
+join us -> https://discord.gg/ey6FAabR46
 

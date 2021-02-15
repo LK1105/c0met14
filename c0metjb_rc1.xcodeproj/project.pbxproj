@@ -19,20 +19,18 @@
 		41A43FFC25DA3EF600EFEA68 /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A43FF925DA3EF600EFEA68 /* appstore.png */; };
 		41A43FFD25DA3EF600EFEA68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41A43FFA25DA3EF600EFEA68 /* Assets.xcassets */; };
 		41A43FFE25DA3EF600EFEA68 /* playstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A43FFB25DA3EF600EFEA68 /* playstore.png */; };
-		41A4401425DA3F7C00EFEA68 /* cicuta_log.c in Sources */ = {isa = PBXBuildFile; fileRef = 41A4400625DA3F7C00EFEA68 /* cicuta_log.c */; };
-		41A4401525DA3F7C00EFEA68 /* fake_element_spray.c in Sources */ = {isa = PBXBuildFile; fileRef = 41A4400725DA3F7C00EFEA68 /* fake_element_spray.c */; };
-		41A4401625DA3F7C00EFEA68 /* descriptors_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 41A4400825DA3F7C00EFEA68 /* descriptors_utils.c */; };
-		41A4401725DA3F7C00EFEA68 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 41A4400A25DA3F7C00EFEA68 /* LICENSE */; };
-		41A4401825DA3F7C00EFEA68 /* cicuta_virosa.c in Sources */ = {isa = PBXBuildFile; fileRef = 41A4400B25DA3F7C00EFEA68 /* cicuta_virosa.c */; };
-		41A4401925DA3F7C00EFEA68 /* voucher_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 41A4400C25DA3F7C00EFEA68 /* voucher_utils.c */; };
-		41A4401A25DA3F7C00EFEA68 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 41A4400D25DA3F7C00EFEA68 /* README.md */; };
-		41A4401B25DA3F7C00EFEA68 /* exploit_utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = 41A4401125DA3F7C00EFEA68 /* exploit_utilities.c */; };
-		41A4403225DA402600EFEA68 /* LibOffset.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A4402825DA402500EFEA68 /* LibOffset.m */; };
-		41A4403325DA402600EFEA68 /* support.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A4402A25DA402600EFEA68 /* support.m */; };
-		41A4403425DA402600EFEA68 /* offsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A4402E25DA402600EFEA68 /* offsets.m */; };
-		41A4408A25DA43E900EFEA68 /* BypassAntiDebugging.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A4408925DA43E900EFEA68 /* BypassAntiDebugging.m */; };
-		41A4408B25DA43E900EFEA68 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 41A4408725DA43E900EFEA68 /* fishhook.c */; };
 		41A4409625DA441C00EFEA68 /* 149365912_257336269254251_7060001045015927618_n.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41A4409525DA441C00EFEA68 /* 149365912_257336269254251_7060001045015927618_n.jpg */; };
+		41A4409F25DA5D8B00EFEA68 /* comet.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A4409E25DA5D8B00EFEA68 /* comet.m */; };
+		41A440B225DA5D9A00EFEA68 /* cicuta_log.c in Sources */ = {isa = PBXBuildFile; fileRef = 41A440A425DA5D9A00EFEA68 /* cicuta_log.c */; };
+		41A440B325DA5D9A00EFEA68 /* fake_element_spray.c in Sources */ = {isa = PBXBuildFile; fileRef = 41A440A525DA5D9A00EFEA68 /* fake_element_spray.c */; };
+		41A440B425DA5D9A00EFEA68 /* descriptors_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 41A440A625DA5D9A00EFEA68 /* descriptors_utils.c */; };
+		41A440B525DA5D9A00EFEA68 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 41A440A825DA5D9A00EFEA68 /* LICENSE */; };
+		41A440B625DA5D9A00EFEA68 /* cicuta_virosa.c in Sources */ = {isa = PBXBuildFile; fileRef = 41A440A925DA5D9A00EFEA68 /* cicuta_virosa.c */; };
+		41A440B725DA5D9A00EFEA68 /* voucher_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 41A440AA25DA5D9A00EFEA68 /* voucher_utils.c */; };
+		41A440B825DA5D9A00EFEA68 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 41A440AB25DA5D9A00EFEA68 /* README.md */; };
+		41A440B925DA5D9A00EFEA68 /* exploit_utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = 41A440AF25DA5D9A00EFEA68 /* exploit_utilities.c */; };
+		41A440E625DA5F6200EFEA68 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 41A440E525DA5F6200EFEA68 /* fishhook.c */; };
+		41A440F025DA5F6F00EFEA68 /* BypassAntiDebugging.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A440EF25DA5F6F00EFEA68 /* BypassAntiDebugging.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,75 +72,27 @@
 		41A43FF925DA3EF600EFEA68 /* appstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appstore.png; sourceTree = "<group>"; };
 		41A43FFA25DA3EF600EFEA68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41A43FFB25DA3EF600EFEA68 /* playstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playstore.png; sourceTree = "<group>"; };
-		41A4400625DA3F7C00EFEA68 /* cicuta_log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cicuta_log.c; sourceTree = "<group>"; };
-		41A4400725DA3F7C00EFEA68 /* fake_element_spray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fake_element_spray.c; sourceTree = "<group>"; };
-		41A4400825DA3F7C00EFEA68 /* descriptors_utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = descriptors_utils.c; sourceTree = "<group>"; };
-		41A4400925DA3F7C00EFEA68 /* exploit_utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exploit_utilities.h; sourceTree = "<group>"; };
-		41A4400A25DA3F7C00EFEA68 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		41A4400B25DA3F7C00EFEA68 /* cicuta_virosa.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cicuta_virosa.c; sourceTree = "<group>"; };
-		41A4400C25DA3F7C00EFEA68 /* voucher_utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = voucher_utils.c; sourceTree = "<group>"; };
-		41A4400D25DA3F7C00EFEA68 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		41A4400E25DA3F7C00EFEA68 /* cicuta_log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cicuta_log.h; sourceTree = "<group>"; };
-		41A4400F25DA3F7C00EFEA68 /* fake_element_spray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fake_element_spray.h; sourceTree = "<group>"; };
-		41A4401025DA3F7C00EFEA68 /* voucher_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = voucher_utils.h; sourceTree = "<group>"; };
-		41A4401125DA3F7C00EFEA68 /* exploit_utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = exploit_utilities.c; sourceTree = "<group>"; };
-		41A4401225DA3F7C00EFEA68 /* cicuta_virosa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cicuta_virosa.h; sourceTree = "<group>"; };
-		41A4401325DA3F7C00EFEA68 /* descriptors_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = descriptors_utils.h; sourceTree = "<group>"; };
-		41A4402825DA402500EFEA68 /* LibOffset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibOffset.m; sourceTree = "<group>"; };
-		41A4402A25DA402600EFEA68 /* support.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = support.m; sourceTree = "<group>"; };
-		41A4402B25DA402600EFEA68 /* mach_vm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mach_vm.h; sourceTree = "<group>"; };
-		41A4402C25DA402600EFEA68 /* pwner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pwner.h; sourceTree = "<group>"; };
-		41A4402D25DA402600EFEA68 /* LibOffset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibOffset.h; sourceTree = "<group>"; };
-		41A4402E25DA402600EFEA68 /* offsets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = offsets.m; sourceTree = "<group>"; };
-		41A4402F25DA402600EFEA68 /* support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = support.h; sourceTree = "<group>"; };
-		41A4403125DA402600EFEA68 /* offsets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = offsets.h; sourceTree = "<group>"; };
-		41A4405B25DA43DB00EFEA68 /* exploit_utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = exploit_utilities.h; sourceTree = "<group>"; };
-		41A4405C25DA43DB00EFEA68 /* fake_element_spray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fake_element_spray.h; sourceTree = "<group>"; };
-		41A4405D25DA43DB00EFEA68 /* voucher_utils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = voucher_utils.c; sourceTree = "<group>"; };
-		41A4405E25DA43DB00EFEA68 /* cicuta_log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cicuta_log.h; sourceTree = "<group>"; };
-		41A4405F25DA43DB00EFEA68 /* cicuta_virosa.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cicuta_virosa.h; sourceTree = "<group>"; };
-		41A4406025DA43DB00EFEA68 /* cicuta_log.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cicuta_log.c; sourceTree = "<group>"; };
-		41A4406125DA43DB00EFEA68 /* cicuta_virosa.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cicuta_virosa.c; sourceTree = "<group>"; };
-		41A4406225DA43DB00EFEA68 /* descriptors_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = descriptors_utils.h; sourceTree = "<group>"; };
-		41A4406325DA43DB00EFEA68 /* voucher_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = voucher_utils.h; sourceTree = "<group>"; };
-		41A4406425DA43DB00EFEA68 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		41A4406525DA43DB00EFEA68 /* fake_element_spray.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fake_element_spray.c; sourceTree = "<group>"; };
-		41A4406625DA43DB00EFEA68 /* exploit_utilities.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = exploit_utilities.c; sourceTree = "<group>"; };
-		41A4406725DA43DB00EFEA68 /* descriptors_utils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = descriptors_utils.c; sourceTree = "<group>"; };
-		41A4406825DA43DB00EFEA68 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		41A4406A25DA43DE00EFEA68 /* cicuta_log.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cicuta_log.c; sourceTree = "<group>"; };
-		41A4406B25DA43DE00EFEA68 /* fake_element_spray.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fake_element_spray.c; sourceTree = "<group>"; };
-		41A4406C25DA43DE00EFEA68 /* descriptors_utils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = descriptors_utils.c; sourceTree = "<group>"; };
-		41A4406D25DA43DE00EFEA68 /* exploit_utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = exploit_utilities.h; sourceTree = "<group>"; };
-		41A4406E25DA43DE00EFEA68 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		41A4406F25DA43DE00EFEA68 /* cicuta_virosa.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cicuta_virosa.c; sourceTree = "<group>"; };
-		41A4407025DA43DE00EFEA68 /* voucher_utils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = voucher_utils.c; sourceTree = "<group>"; };
-		41A4407125DA43DE00EFEA68 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		41A4407225DA43DE00EFEA68 /* cicuta_log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cicuta_log.h; sourceTree = "<group>"; };
-		41A4407325DA43DE00EFEA68 /* fake_element_spray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fake_element_spray.h; sourceTree = "<group>"; };
-		41A4407425DA43DE00EFEA68 /* voucher_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = voucher_utils.h; sourceTree = "<group>"; };
-		41A4407525DA43DE00EFEA68 /* exploit_utilities.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = exploit_utilities.c; sourceTree = "<group>"; };
-		41A4407625DA43DE00EFEA68 /* cicuta_virosa.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cicuta_virosa.h; sourceTree = "<group>"; };
-		41A4407725DA43DE00EFEA68 /* descriptors_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = descriptors_utils.h; sourceTree = "<group>"; };
-		41A4407825DA43DE00EFEA68 /* descriptors_utils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = descriptors_utils.c; path = "../../../../../Downloads/PlankFilza-main/PlankFilza/exploit/descriptors_utils.c"; sourceTree = "<group>"; };
-		41A4407925DA43DE00EFEA68 /* cicuta_virosa.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = cicuta_virosa.c; path = "../../../../../Downloads/PlankFilza-main/PlankFilza/exploit/cicuta_virosa.c"; sourceTree = "<group>"; };
-		41A4407A25DA43DE00EFEA68 /* fake_element_spray.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = fake_element_spray.c; path = "../../../../../Downloads/PlankFilza-main/PlankFilza/exploit/fake_element_spray.c"; sourceTree = "<group>"; };
-		41A4407B25DA43DE00EFEA68 /* voucher_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = voucher_utils.h; path = "../../../../../Downloads/PlankFilza-main/PlankFilza/exploit/voucher_utils.h"; sourceTree = "<group>"; };
-		41A4407C25DA43DE00EFEA68 /* cicuta_log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cicuta_log.h; path = "../../../../../Downloads/PlankFilza-main/PlankFilza/exploit/cicuta_log.h"; sourceTree = "<group>"; };
-		41A4407D25DA43DE00EFEA68 /* fake_element_spray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fake_element_spray.h; path = "../../../../../Downloads/PlankFilza-main/PlankFilza/exploit/fake_element_spray.h"; sourceTree = "<group>"; };
-		41A4407E25DA43DE00EFEA68 /* exploit_utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = exploit_utilities.h; path = "../../../../../Downloads/PlankFilza-main/PlankFilza/exploit/exploit_utilities.h"; sourceTree = "<group>"; };
-		41A4407F25DA43DE00EFEA68 /* cicuta_virosa.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cicuta_virosa.h; path = "../../../../../Downloads/PlankFilza-main/PlankFilza/exploit/cicuta_virosa.h"; sourceTree = "<group>"; };
-		41A4408025DA43DE00EFEA68 /* voucher_utils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = voucher_utils.c; path = "../../../../../Downloads/PlankFilza-main/PlankFilza/exploit/voucher_utils.c"; sourceTree = "<group>"; };
-		41A4408125DA43DE00EFEA68 /* exploit_utilities.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = exploit_utilities.c; path = "../../../../../Downloads/PlankFilza-main/PlankFilza/exploit/exploit_utilities.c"; sourceTree = "<group>"; };
-		41A4408225DA43DE00EFEA68 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = "../../../../../Downloads/PlankFilza-main/PlankFilza/exploit/README.md"; sourceTree = "<group>"; };
-		41A4408325DA43DE00EFEA68 /* descriptors_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = descriptors_utils.h; path = "../../../../../Downloads/PlankFilza-main/PlankFilza/exploit/descriptors_utils.h"; sourceTree = "<group>"; };
-		41A4408425DA43DE00EFEA68 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = "../../../../../Downloads/PlankFilza-main/PlankFilza/exploit/LICENSE"; sourceTree = "<group>"; };
-		41A4408525DA43DF00EFEA68 /* cicuta_log.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = cicuta_log.c; path = "../../../../../Downloads/PlankFilza-main/PlankFilza/exploit/cicuta_log.c"; sourceTree = "<group>"; };
-		41A4408625DA43E800EFEA68 /* fishhook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
-		41A4408725DA43E900EFEA68 /* fishhook.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
-		41A4408825DA43E900EFEA68 /* BypassAntiDebugging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BypassAntiDebugging.h; sourceTree = "<group>"; };
-		41A4408925DA43E900EFEA68 /* BypassAntiDebugging.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BypassAntiDebugging.m; sourceTree = "<group>"; };
 		41A4409525DA441C00EFEA68 /* 149365912_257336269254251_7060001045015927618_n.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 149365912_257336269254251_7060001045015927618_n.jpg; sourceTree = "<group>"; };
+		41A4409D25DA5D8B00EFEA68 /* comet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = comet.h; sourceTree = "<group>"; };
+		41A4409E25DA5D8B00EFEA68 /* comet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = comet.m; sourceTree = "<group>"; };
+		41A440A425DA5D9A00EFEA68 /* cicuta_log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cicuta_log.c; sourceTree = "<group>"; };
+		41A440A525DA5D9A00EFEA68 /* fake_element_spray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fake_element_spray.c; sourceTree = "<group>"; };
+		41A440A625DA5D9A00EFEA68 /* descriptors_utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = descriptors_utils.c; sourceTree = "<group>"; };
+		41A440A725DA5D9A00EFEA68 /* exploit_utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exploit_utilities.h; sourceTree = "<group>"; };
+		41A440A825DA5D9A00EFEA68 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		41A440A925DA5D9A00EFEA68 /* cicuta_virosa.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cicuta_virosa.c; sourceTree = "<group>"; };
+		41A440AA25DA5D9A00EFEA68 /* voucher_utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = voucher_utils.c; sourceTree = "<group>"; };
+		41A440AB25DA5D9A00EFEA68 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		41A440AC25DA5D9A00EFEA68 /* cicuta_log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cicuta_log.h; sourceTree = "<group>"; };
+		41A440AD25DA5D9A00EFEA68 /* fake_element_spray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fake_element_spray.h; sourceTree = "<group>"; };
+		41A440AE25DA5D9A00EFEA68 /* voucher_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = voucher_utils.h; sourceTree = "<group>"; };
+		41A440AF25DA5D9A00EFEA68 /* exploit_utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = exploit_utilities.c; sourceTree = "<group>"; };
+		41A440B025DA5D9A00EFEA68 /* cicuta_virosa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cicuta_virosa.h; sourceTree = "<group>"; };
+		41A440B125DA5D9A00EFEA68 /* descriptors_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = descriptors_utils.h; sourceTree = "<group>"; };
+		41A440E525DA5F6200EFEA68 /* fishhook.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = fishhook.c; path = ../../PatchDebugging/fishhook/fishhook/fishhook.c; sourceTree = "<group>"; };
+		41A440EA25DA5F6400EFEA68 /* fishhook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fishhook.h; path = ../../PatchDebugging/fishhook/fishhook/fishhook.h; sourceTree = "<group>"; };
+		41A440EE25DA5F6D00EFEA68 /* BypassAntiDebugging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BypassAntiDebugging.h; path = ../../PatchDebugging/BypassAntiDebugging.h; sourceTree = "<group>"; };
+		41A440EF25DA5F6F00EFEA68 /* BypassAntiDebugging.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BypassAntiDebugging.m; path = ../../PatchDebugging/BypassAntiDebugging.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,8 +143,13 @@
 		41A43FBF25DA3EC000EFEA68 /* c0metjb_rc1 */ = {
 			isa = PBXGroup;
 			children = (
+				41A440EE25DA5F6D00EFEA68 /* BypassAntiDebugging.h */,
+				41A440EF25DA5F6F00EFEA68 /* BypassAntiDebugging.m */,
+				41A440E525DA5F6200EFEA68 /* fishhook.c */,
+				41A440EA25DA5F6400EFEA68 /* fishhook.h */,
+				41A440A325DA5D9A00EFEA68 /* exploit */,
+				41A4409C25DA5D8B00EFEA68 /* postexploit */,
 				41A4405925DA43CD00EFEA68 /* resources */,
-				41A4400525DA3F7C00EFEA68 /* exploit */,
 				41A43FF825DA3EF600EFEA68 /* AppIcons */,
 				41A43FC025DA3EC000EFEA68 /* AppDelegate.h */,
 				41A43FC125DA3EC000EFEA68 /* AppDelegate.m */,
@@ -240,102 +195,40 @@
 			path = ../../../Downloads/AppIcons;
 			sourceTree = "<group>";
 		};
-		41A4400525DA3F7C00EFEA68 /* exploit */ = {
-			isa = PBXGroup;
-			children = (
-				41A4402A25DA402600EFEA68 /* support.m */,
-				41A4408825DA43E900EFEA68 /* BypassAntiDebugging.h */,
-				41A4408925DA43E900EFEA68 /* BypassAntiDebugging.m */,
-				41A4408725DA43E900EFEA68 /* fishhook.c */,
-				41A4408625DA43E800EFEA68 /* fishhook.h */,
-				41A4402D25DA402600EFEA68 /* LibOffset.h */,
-				41A4402825DA402500EFEA68 /* LibOffset.m */,
-				41A4402B25DA402600EFEA68 /* mach_vm.h */,
-				41A4403125DA402600EFEA68 /* offsets.h */,
-				41A4402E25DA402600EFEA68 /* offsets.m */,
-				41A4402C25DA402600EFEA68 /* pwner.h */,
-				41A4402F25DA402600EFEA68 /* support.h */,
-				41A4400625DA3F7C00EFEA68 /* cicuta_log.c */,
-				41A4400725DA3F7C00EFEA68 /* fake_element_spray.c */,
-				41A4400825DA3F7C00EFEA68 /* descriptors_utils.c */,
-				41A4400925DA3F7C00EFEA68 /* exploit_utilities.h */,
-				41A4400A25DA3F7C00EFEA68 /* LICENSE */,
-				41A4400B25DA3F7C00EFEA68 /* cicuta_virosa.c */,
-				41A4400C25DA3F7C00EFEA68 /* voucher_utils.c */,
-				41A4400D25DA3F7C00EFEA68 /* README.md */,
-				41A4400E25DA3F7C00EFEA68 /* cicuta_log.h */,
-				41A4400F25DA3F7C00EFEA68 /* fake_element_spray.h */,
-				41A4401025DA3F7C00EFEA68 /* voucher_utils.h */,
-				41A4401125DA3F7C00EFEA68 /* exploit_utilities.c */,
-				41A4401225DA3F7C00EFEA68 /* cicuta_virosa.h */,
-				41A4401325DA3F7C00EFEA68 /* descriptors_utils.h */,
-			);
-			name = exploit;
-			path = "../../../Downloads/PlankFilza-main/PlankFilza/exploit";
-			sourceTree = "<group>";
-		};
 		41A4405925DA43CD00EFEA68 /* resources */ = {
 			isa = PBXGroup;
 			children = (
 				41A4409525DA441C00EFEA68 /* 149365912_257336269254251_7060001045015927618_n.jpg */,
-				41A4406925DA43DE00EFEA68 /* exploit */,
-				41A4405A25DA43DB00EFEA68 /* exploit */,
 			);
 			path = resources;
 			sourceTree = "<group>";
 		};
-		41A4405A25DA43DB00EFEA68 /* exploit */ = {
+		41A4409C25DA5D8B00EFEA68 /* postexploit */ = {
 			isa = PBXGroup;
 			children = (
-				41A4406025DA43DB00EFEA68 /* cicuta_log.c */,
-				41A4406525DA43DB00EFEA68 /* fake_element_spray.c */,
-				41A4406725DA43DB00EFEA68 /* descriptors_utils.c */,
-				41A4405B25DA43DB00EFEA68 /* exploit_utilities.h */,
-				41A4406425DA43DB00EFEA68 /* LICENSE */,
-				41A4406125DA43DB00EFEA68 /* cicuta_virosa.c */,
-				41A4405D25DA43DB00EFEA68 /* voucher_utils.c */,
-				41A4406825DA43DB00EFEA68 /* README.md */,
-				41A4405E25DA43DB00EFEA68 /* cicuta_log.h */,
-				41A4405C25DA43DB00EFEA68 /* fake_element_spray.h */,
-				41A4406325DA43DB00EFEA68 /* voucher_utils.h */,
-				41A4406625DA43DB00EFEA68 /* exploit_utilities.c */,
-				41A4405F25DA43DB00EFEA68 /* cicuta_virosa.h */,
-				41A4406225DA43DB00EFEA68 /* descriptors_utils.h */,
+				41A4409D25DA5D8B00EFEA68 /* comet.h */,
+				41A4409E25DA5D8B00EFEA68 /* comet.m */,
 			);
-			path = exploit;
+			path = postexploit;
 			sourceTree = "<group>";
 		};
-		41A4406925DA43DE00EFEA68 /* exploit */ = {
+		41A440A325DA5D9A00EFEA68 /* exploit */ = {
 			isa = PBXGroup;
 			children = (
-				41A4406A25DA43DE00EFEA68 /* cicuta_log.c */,
-				41A4408525DA43DF00EFEA68 /* cicuta_log.c */,
-				41A4406B25DA43DE00EFEA68 /* fake_element_spray.c */,
-				41A4407A25DA43DE00EFEA68 /* fake_element_spray.c */,
-				41A4406C25DA43DE00EFEA68 /* descriptors_utils.c */,
-				41A4407825DA43DE00EFEA68 /* descriptors_utils.c */,
-				41A4406D25DA43DE00EFEA68 /* exploit_utilities.h */,
-				41A4407E25DA43DE00EFEA68 /* exploit_utilities.h */,
-				41A4406E25DA43DE00EFEA68 /* LICENSE */,
-				41A4408425DA43DE00EFEA68 /* LICENSE */,
-				41A4406F25DA43DE00EFEA68 /* cicuta_virosa.c */,
-				41A4407925DA43DE00EFEA68 /* cicuta_virosa.c */,
-				41A4407025DA43DE00EFEA68 /* voucher_utils.c */,
-				41A4408025DA43DE00EFEA68 /* voucher_utils.c */,
-				41A4407125DA43DE00EFEA68 /* README.md */,
-				41A4408225DA43DE00EFEA68 /* README.md */,
-				41A4407225DA43DE00EFEA68 /* cicuta_log.h */,
-				41A4407C25DA43DE00EFEA68 /* cicuta_log.h */,
-				41A4407325DA43DE00EFEA68 /* fake_element_spray.h */,
-				41A4407D25DA43DE00EFEA68 /* fake_element_spray.h */,
-				41A4407425DA43DE00EFEA68 /* voucher_utils.h */,
-				41A4407B25DA43DE00EFEA68 /* voucher_utils.h */,
-				41A4407525DA43DE00EFEA68 /* exploit_utilities.c */,
-				41A4408125DA43DE00EFEA68 /* exploit_utilities.c */,
-				41A4407625DA43DE00EFEA68 /* cicuta_virosa.h */,
-				41A4408325DA43DE00EFEA68 /* descriptors_utils.h */,
-				41A4407F25DA43DE00EFEA68 /* cicuta_virosa.h */,
-				41A4407725DA43DE00EFEA68 /* descriptors_utils.h */,
+				41A440A425DA5D9A00EFEA68 /* cicuta_log.c */,
+				41A440A525DA5D9A00EFEA68 /* fake_element_spray.c */,
+				41A440A625DA5D9A00EFEA68 /* descriptors_utils.c */,
+				41A440A725DA5D9A00EFEA68 /* exploit_utilities.h */,
+				41A440A825DA5D9A00EFEA68 /* LICENSE */,
+				41A440A925DA5D9A00EFEA68 /* cicuta_virosa.c */,
+				41A440AA25DA5D9A00EFEA68 /* voucher_utils.c */,
+				41A440AB25DA5D9A00EFEA68 /* README.md */,
+				41A440AC25DA5D9A00EFEA68 /* cicuta_log.h */,
+				41A440AD25DA5D9A00EFEA68 /* fake_element_spray.h */,
+				41A440AE25DA5D9A00EFEA68 /* voucher_utils.h */,
+				41A440AF25DA5D9A00EFEA68 /* exploit_utilities.c */,
+				41A440B025DA5D9A00EFEA68 /* cicuta_virosa.h */,
+				41A440B125DA5D9A00EFEA68 /* descriptors_utils.h */,
 			);
 			path = exploit;
 			sourceTree = "<group>";
@@ -446,10 +339,10 @@
 				41A4409625DA441C00EFEA68 /* 149365912_257336269254251_7060001045015927618_n.jpg in Resources */,
 				41A43FFC25DA3EF600EFEA68 /* appstore.png in Resources */,
 				41A43FCD25DA3EC200EFEA68 /* Assets.xcassets in Resources */,
-				41A4401725DA3F7C00EFEA68 /* LICENSE in Resources */,
+				41A440B525DA5D9A00EFEA68 /* LICENSE in Resources */,
 				41A43FCB25DA3EC000EFEA68 /* Main.storyboard in Resources */,
 				41A43FFD25DA3EF600EFEA68 /* Assets.xcassets in Resources */,
-				41A4401A25DA3F7C00EFEA68 /* README.md in Resources */,
+				41A440B825DA5D9A00EFEA68 /* README.md in Resources */,
 				41A43FFE25DA3EF600EFEA68 /* playstore.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,21 +368,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41A4401B25DA3F7C00EFEA68 /* exploit_utilities.c in Sources */,
-				41A4401925DA3F7C00EFEA68 /* voucher_utils.c in Sources */,
-				41A4408B25DA43E900EFEA68 /* fishhook.c in Sources */,
-				41A4401425DA3F7C00EFEA68 /* cicuta_log.c in Sources */,
-				41A4401525DA3F7C00EFEA68 /* fake_element_spray.c in Sources */,
-				41A4401625DA3F7C00EFEA68 /* descriptors_utils.c in Sources */,
+				41A440B725DA5D9A00EFEA68 /* voucher_utils.c in Sources */,
+				41A4409F25DA5D8B00EFEA68 /* comet.m in Sources */,
+				41A440B225DA5D9A00EFEA68 /* cicuta_log.c in Sources */,
+				41A440B425DA5D9A00EFEA68 /* descriptors_utils.c in Sources */,
+				41A440B925DA5D9A00EFEA68 /* exploit_utilities.c in Sources */,
+				41A440B625DA5D9A00EFEA68 /* cicuta_virosa.c in Sources */,
+				41A440B325DA5D9A00EFEA68 /* fake_element_spray.c in Sources */,
+				41A440E625DA5F6200EFEA68 /* fishhook.c in Sources */,
 				41A43FC825DA3EC000EFEA68 /* ViewController.m in Sources */,
-				41A4401825DA3F7C00EFEA68 /* cicuta_virosa.c in Sources */,
-				41A4403225DA402600EFEA68 /* LibOffset.m in Sources */,
+				41A440F025DA5F6F00EFEA68 /* BypassAntiDebugging.m in Sources */,
 				41A43FC225DA3EC000EFEA68 /* AppDelegate.m in Sources */,
-				41A4408A25DA43E900EFEA68 /* BypassAntiDebugging.m in Sources */,
 				41A43FD325DA3EC200EFEA68 /* main.m in Sources */,
 				41A43FC525DA3EC000EFEA68 /* SceneDelegate.m in Sources */,
-				41A4403425DA402600EFEA68 /* offsets.m in Sources */,
-				41A4403325DA402600EFEA68 /* support.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

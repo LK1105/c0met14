@@ -1,0 +1,1 @@
+echo 'we are basically in the rootfs and you executed me with posix_spawn'

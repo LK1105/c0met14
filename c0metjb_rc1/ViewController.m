@@ -47,7 +47,7 @@
 
 @implementation ViewController
 -(void)log:(NSString*)log {
-    
+    NSLog(log);
 }
 
 /*#define LOG(what, ...) dispatch_async(dispatch_get_main_queue(), ^{ \
@@ -86,7 +86,8 @@
                                    if (error) {\
                                        LOG("[-] Error moviing item %s to path %s (%s)", copyFrom, moveTo, [[error localizedDescription] UTF8String]); \
                                        error = NULL; \
-}
+                                   }
+
 - (NSURL *)applicationDocumentsDirectory
 {
   return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
@@ -121,76 +122,8 @@ int launch(char *binary, char *arg1, char *arg2, char *arg3, char *arg4, char *a
     
     //return WEXITSTATUS(a);
 }
-char* prepare_directory(char* dir_path) {
-    DIR *dp;
-    struct dirent *ep;
-    
-    char* in_path = NULL;
-    asprintf(&in_path, "/var/containers/Bundle/iosbinpack64/%s", dir_path);
-    
-    dp = opendir(in_path);
-    if (dp == NULL) {
-        printf("[-] Unable to open payload directory: %s\n", in_path);
-        return NULL;
-    }
-    
-    while ((ep = readdir(dp))) {
-        char* entry = ep->d_name;
-        char* full_entry_path = NULL;
-        asprintf(&full_entry_path, "/var/containers/Bundle/iosbinpack64/%s/%s", dir_path, entry);
-        
-        printf("[*] preparing: %s\n", full_entry_path);
-        
-        // make that executable:
-        int chmod_err = chmod(full_entry_path, 0777);
-        if (chmod_err != 0){
-            printf("[-] chmod failed\n");
-        }
-        
-        free(full_entry_path);
-    }
-    
-    closedir(dp);
-    
-    return in_path;
-}
 
-// prepare all the payload binaries under the iosbinpack64 directory
-// and build up the PATH
-char* prepare_payload() {
-    char* path = calloc(4096, 1);
-    strcpy(path, "PATH=");
-    char* dir;
-    dir = prepare_directory("bin");
-    strcat(path, dir);
-    strcat(path, ":");
-    free(dir);
-    
-    dir = prepare_directory("sbin");
-    strcat(path, dir);
-    strcat(path, ":");
-    free(dir);
-    
-    dir = prepare_directory("usr/bin");
-    strcat(path, dir);
-    strcat(path, ":");
-    free(dir);
-    
-    dir = prepare_directory("usr/local/bin");
-    strcat(path, dir);
-    strcat(path, ":");
-    free(dir);
-    
-    dir = prepare_directory("usr/sbin");
-    strcat(path, dir);
-    strcat(path, ":");
-    free(dir);
-    
-    strcat(path, "/bin:/sbin:/usr/bin:/usr/sbin:/usr/libexec");
-    
-    return path;
-}
-#define in_bundle(obj) strdup([[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@obj] UTF8String])
+
 
 - (void)installBin:(NSString *)data
 {
@@ -204,52 +137,39 @@ char* prepare_payload() {
            
 
           
-       
+    NSError *error = NULL;
     NSBundle* ucache;
      
     // Obtain a reference to a loadable bundle.
-    ucache = [NSBundle bundleWithPath:@"/bin/uicache"];
+    ucache = [NSBundle bundleWithPath:@"uicache"];
 
     cicuta_log("...");
     cicuta_log("..");
+    
     sleep(1);
-    NSString *stringURL = @"https://cdn.discordapp.com/attachments/810794396449767445/810812755841515520/uicache";
-    NSURL  *url = [NSURL URLWithString:stringURL];
-    NSData *urlData = [NSData dataWithContentsOfURL:url];
-    if ( urlData )
-    {
-      NSArray       *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-      NSString  *documentsDirectory = [paths objectAtIndex:0];
-
-      NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"uicache"];
-      [urlData writeToFile:filePath atomically:YES];
-    }
-    
-    NSFileManager* manager = [NSFileManager defaultManager];
-    NSError* error;
-    NSString *documentDirectory = [[self applicationDocumentsDirectory] absoluteString];
-
-    NSString *writableDBPath = [documentDirectory stringByAppendingPathComponent:@"uicache"];
-    NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"uicache"];
-    if([manager copyItemAtPath:defaultDBPath toPath:@"/var/mobile/uicache" error:&error])
-    {
-        cicuta_log("[+] uicache installed -> execution...");
-    }
-    else
-    {
-       cicuta_log("failed to install unicache -> bootstrap installation failed.");
-    }
-    // Destination URL
-    
-    // copy it over
-    
-
+    cicuta_log("[+] Time to extract our bootstrap...");
+    sleep(2);
+    chmod(in_bundle("uicache"), 0777); //give it proper permissions
+    chmod(in_bundle("ssh"), 0777);
+    copyFile(in_bundle("uicache"), "/var/mobile/uicache");
+    copyFile(in_bundle("ssh"), "/var/mobile/ssh");
+    copyFile(in_bundle("scp"), "/var/mobile/scp");
+    copyFile(in_bundle("sftp-server"), "/var/mobile/sftp-server");
+    copyFile(in_bundle("ssh-add"), "/var/mobile/ssh-add");
+    copyFile(in_bundle("ssh-agent"), "/var/mobile/ssh-agent");
+    copyFile(in_bundle("ssh-keygen"), "/var/mobile/ssh-keygen");
+    copyFile(in_bundle("ssh-keyscan"), "/var/mobile/ssh-keyscan");
+    copyFile(in_bundle("ssh-keysign"), "/var/mobile/ssh-keysign");
+    copyFile(in_bundle("ssh-pkcs11-helper"), "/var/mobile/ssh-pkcs11-helper");
+    copyFile(in_bundle("sshd"), "/var/mobile/sshd");
     launch("/var/mobile/uicache", NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+    launch("/var/mobile/ssh", NULL, NULL, NULL, NULL, NULL, NULL, NULL);
   
 }
 - (IBAction)post_exploit:(UIButton *)sender {
   
     installBootstrapAndUnsadbox(nil);
+
     if([[NSFileManager defaultManager] fileExistsAtPath:@"/var/mobile/c0met.ini"]){
         cicuta_log("...");
         cicuta_log("yes yes we are in. jailbroken state unless you exit the app");

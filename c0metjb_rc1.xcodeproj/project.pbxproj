@@ -33,6 +33,18 @@
 		41A440F025DA5F6F00EFEA68 /* BypassAntiDebugging.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A440EF25DA5F6F00EFEA68 /* BypassAntiDebugging.m */; };
 		41A4410725DA6F7A00EFEA68 /* iSuperSU.app in Resources */ = {isa = PBXBuildFile; fileRef = 41A4410625DA6F7A00EFEA68 /* iSuperSU.app */; };
 		41A4410C25DA6FA500EFEA68 /* uicache in Resources */ = {isa = PBXBuildFile; fileRef = 41A4410B25DA6FA500EFEA68 /* uicache */; };
+		41A4411425DA950C00EFEA68 /* comet-hello.sh in Resources */ = {isa = PBXBuildFile; fileRef = 41A4411325DA950C00EFEA68 /* comet-hello.sh */; };
+		41A4412925DAA53400EFEA68 /* sftp in Resources */ = {isa = PBXBuildFile; fileRef = 41A4411E25DAA53300EFEA68 /* sftp */; };
+		41A4412A25DAA53400EFEA68 /* ssh in Resources */ = {isa = PBXBuildFile; fileRef = 41A4411F25DAA53300EFEA68 /* ssh */; };
+		41A4412B25DAA53400EFEA68 /* sshd in Resources */ = {isa = PBXBuildFile; fileRef = 41A4412025DAA53300EFEA68 /* sshd */; };
+		41A4412C25DAA53400EFEA68 /* ssh-pkcs11-helper in Resources */ = {isa = PBXBuildFile; fileRef = 41A4412125DAA53300EFEA68 /* ssh-pkcs11-helper */; };
+		41A4412D25DAA53400EFEA68 /* scp in Resources */ = {isa = PBXBuildFile; fileRef = 41A4412225DAA53300EFEA68 /* scp */; };
+		41A4412E25DAA53400EFEA68 /* ssh-add in Resources */ = {isa = PBXBuildFile; fileRef = 41A4412325DAA53300EFEA68 /* ssh-add */; };
+		41A4412F25DAA53400EFEA68 /* sftp-server in Resources */ = {isa = PBXBuildFile; fileRef = 41A4412425DAA53300EFEA68 /* sftp-server */; };
+		41A4413025DAA53400EFEA68 /* ssh-agent in Resources */ = {isa = PBXBuildFile; fileRef = 41A4412525DAA53300EFEA68 /* ssh-agent */; };
+		41A4413125DAA53400EFEA68 /* ssh-keygen in Resources */ = {isa = PBXBuildFile; fileRef = 41A4412625DAA53300EFEA68 /* ssh-keygen */; };
+		41A4413225DAA53400EFEA68 /* ssh-keyscan in Resources */ = {isa = PBXBuildFile; fileRef = 41A4412725DAA53400EFEA68 /* ssh-keyscan */; };
+		41A4413325DAA53400EFEA68 /* ssh-keysign in Resources */ = {isa = PBXBuildFile; fileRef = 41A4412825DAA53400EFEA68 /* ssh-keysign */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +109,18 @@
 		41A440EF25DA5F6F00EFEA68 /* BypassAntiDebugging.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BypassAntiDebugging.m; path = ../../PatchDebugging/BypassAntiDebugging.m; sourceTree = "<group>"; };
 		41A4410625DA6F7A00EFEA68 /* iSuperSU.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = iSuperSU.app; sourceTree = "<group>"; };
 		41A4410B25DA6FA500EFEA68 /* uicache */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = uicache; sourceTree = "<group>"; };
+		41A4411325DA950C00EFEA68 /* comet-hello.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "comet-hello.sh"; sourceTree = "<group>"; };
+		41A4411E25DAA53300EFEA68 /* sftp */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = sftp; sourceTree = "<group>"; };
+		41A4411F25DAA53300EFEA68 /* ssh */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ssh; sourceTree = "<group>"; };
+		41A4412025DAA53300EFEA68 /* sshd */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = sshd; sourceTree = "<group>"; };
+		41A4412125DAA53300EFEA68 /* ssh-pkcs11-helper */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ssh-pkcs11-helper"; sourceTree = "<group>"; };
+		41A4412225DAA53300EFEA68 /* scp */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = scp; sourceTree = "<group>"; };
+		41A4412325DAA53300EFEA68 /* ssh-add */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ssh-add"; sourceTree = "<group>"; };
+		41A4412425DAA53300EFEA68 /* sftp-server */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "sftp-server"; sourceTree = "<group>"; };
+		41A4412525DAA53300EFEA68 /* ssh-agent */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ssh-agent"; sourceTree = "<group>"; };
+		41A4412625DAA53300EFEA68 /* ssh-keygen */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ssh-keygen"; sourceTree = "<group>"; };
+		41A4412725DAA53400EFEA68 /* ssh-keyscan */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ssh-keyscan"; sourceTree = "<group>"; };
+		41A4412825DAA53400EFEA68 /* ssh-keysign */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ssh-keysign"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +151,18 @@
 		41A43FB425DA3EC000EFEA68 = {
 			isa = PBXGroup;
 			children = (
+				41A4412225DAA53300EFEA68 /* scp */,
+				41A4411E25DAA53300EFEA68 /* sftp */,
+				41A4412425DAA53300EFEA68 /* sftp-server */,
+				41A4411F25DAA53300EFEA68 /* ssh */,
+				41A4412325DAA53300EFEA68 /* ssh-add */,
+				41A4412525DAA53300EFEA68 /* ssh-agent */,
+				41A4412625DAA53300EFEA68 /* ssh-keygen */,
+				41A4412725DAA53400EFEA68 /* ssh-keyscan */,
+				41A4412825DAA53400EFEA68 /* ssh-keysign */,
+				41A4412125DAA53300EFEA68 /* ssh-pkcs11-helper */,
+				41A4412025DAA53300EFEA68 /* sshd */,
+				41A4410B25DA6FA500EFEA68 /* uicache */,
 				41A4410525DA6F4F00EFEA68 /* bin */,
 				41A43FBF25DA3EC000EFEA68 /* c0metjb_rc1 */,
 				41A43FDB25DA3EC200EFEA68 /* c0metjb_rc1Tests */,
@@ -241,7 +277,7 @@
 		41A4410525DA6F4F00EFEA68 /* bin */ = {
 			isa = PBXGroup;
 			children = (
-				41A4410B25DA6FA500EFEA68 /* uicache */,
+				41A4411325DA950C00EFEA68 /* comet-hello.sh */,
 				41A4410625DA6F7A00EFEA68 /* iSuperSU.app */,
 			);
 			path = bin;
@@ -349,15 +385,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41A4412F25DAA53400EFEA68 /* sftp-server in Resources */,
 				41A43FD025DA3EC200EFEA68 /* LaunchScreen.storyboard in Resources */,
+				41A4412B25DAA53400EFEA68 /* sshd in Resources */,
+				41A4412925DAA53400EFEA68 /* sftp in Resources */,
+				41A4413225DAA53400EFEA68 /* ssh-keyscan in Resources */,
 				41A4410725DA6F7A00EFEA68 /* iSuperSU.app in Resources */,
 				41A4409625DA441C00EFEA68 /* 149365912_257336269254251_7060001045015927618_n.jpg in Resources */,
 				41A43FFC25DA3EF600EFEA68 /* appstore.png in Resources */,
+				41A4412D25DAA53400EFEA68 /* scp in Resources */,
 				41A43FCD25DA3EC200EFEA68 /* Assets.xcassets in Resources */,
 				41A440B525DA5D9A00EFEA68 /* LICENSE in Resources */,
+				41A4413325DAA53400EFEA68 /* ssh-keysign in Resources */,
+				41A4412E25DAA53400EFEA68 /* ssh-add in Resources */,
 				41A43FCB25DA3EC000EFEA68 /* Main.storyboard in Resources */,
 				41A43FFD25DA3EF600EFEA68 /* Assets.xcassets in Resources */,
+				41A4411425DA950C00EFEA68 /* comet-hello.sh in Resources */,
 				41A440B825DA5D9A00EFEA68 /* README.md in Resources */,
+				41A4413125DAA53400EFEA68 /* ssh-keygen in Resources */,
+				41A4413025DAA53400EFEA68 /* ssh-agent in Resources */,
+				41A4412C25DAA53400EFEA68 /* ssh-pkcs11-helper in Resources */,
+				41A4412A25DAA53400EFEA68 /* ssh in Resources */,
 				41A4410C25DA6FA500EFEA68 /* uicache in Resources */,
 				41A43FFE25DA3EF600EFEA68 /* playstore.png in Resources */,
 			);

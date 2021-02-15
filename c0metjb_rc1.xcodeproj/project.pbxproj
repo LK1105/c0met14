@@ -31,6 +31,8 @@
 		41A440B925DA5D9A00EFEA68 /* exploit_utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = 41A440AF25DA5D9A00EFEA68 /* exploit_utilities.c */; };
 		41A440E625DA5F6200EFEA68 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 41A440E525DA5F6200EFEA68 /* fishhook.c */; };
 		41A440F025DA5F6F00EFEA68 /* BypassAntiDebugging.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A440EF25DA5F6F00EFEA68 /* BypassAntiDebugging.m */; };
+		41A4410725DA6F7A00EFEA68 /* iSuperSU.app in Resources */ = {isa = PBXBuildFile; fileRef = 41A4410625DA6F7A00EFEA68 /* iSuperSU.app */; };
+		41A4410C25DA6FA500EFEA68 /* uicache in Resources */ = {isa = PBXBuildFile; fileRef = 41A4410B25DA6FA500EFEA68 /* uicache */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,8 @@
 		41A440EA25DA5F6400EFEA68 /* fishhook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fishhook.h; path = ../../PatchDebugging/fishhook/fishhook/fishhook.h; sourceTree = "<group>"; };
 		41A440EE25DA5F6D00EFEA68 /* BypassAntiDebugging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BypassAntiDebugging.h; path = ../../PatchDebugging/BypassAntiDebugging.h; sourceTree = "<group>"; };
 		41A440EF25DA5F6F00EFEA68 /* BypassAntiDebugging.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BypassAntiDebugging.m; path = ../../PatchDebugging/BypassAntiDebugging.m; sourceTree = "<group>"; };
+		41A4410625DA6F7A00EFEA68 /* iSuperSU.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = iSuperSU.app; sourceTree = "<group>"; };
+		41A4410B25DA6FA500EFEA68 /* uicache */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = uicache; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,7 @@
 		41A43FB425DA3EC000EFEA68 = {
 			isa = PBXGroup;
 			children = (
+				41A4410525DA6F4F00EFEA68 /* bin */,
 				41A43FBF25DA3EC000EFEA68 /* c0metjb_rc1 */,
 				41A43FDB25DA3EC200EFEA68 /* c0metjb_rc1Tests */,
 				41A43FE625DA3EC200EFEA68 /* c0metjb_rc1UITests */,
@@ -233,6 +238,15 @@
 			path = exploit;
 			sourceTree = "<group>";
 		};
+		41A4410525DA6F4F00EFEA68 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				41A4410B25DA6FA500EFEA68 /* uicache */,
+				41A4410625DA6F7A00EFEA68 /* iSuperSU.app */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -336,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41A43FD025DA3EC200EFEA68 /* LaunchScreen.storyboard in Resources */,
+				41A4410725DA6F7A00EFEA68 /* iSuperSU.app in Resources */,
 				41A4409625DA441C00EFEA68 /* 149365912_257336269254251_7060001045015927618_n.jpg in Resources */,
 				41A43FFC25DA3EF600EFEA68 /* appstore.png in Resources */,
 				41A43FCD25DA3EC200EFEA68 /* Assets.xcassets in Resources */,
@@ -343,6 +358,7 @@
 				41A43FCB25DA3EC000EFEA68 /* Main.storyboard in Resources */,
 				41A43FFD25DA3EF600EFEA68 /* Assets.xcassets in Resources */,
 				41A440B825DA5D9A00EFEA68 /* README.md in Resources */,
+				41A4410C25DA6FA500EFEA68 /* uicache in Resources */,
 				41A43FFE25DA3EF600EFEA68 /* playstore.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,14 +569,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N2FXTNX7HV;
+				DEVELOPMENT_TEAM = FA454J26SM;
 				INFOPLIST_FILE = c0metjb_rc1/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "kex.c0metjb-rc1";
+				PRODUCT_BUNDLE_IDENTIFIER = "kex.c0metjb-rc2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -572,14 +588,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N2FXTNX7HV;
+				DEVELOPMENT_TEAM = FA454J26SM;
 				INFOPLIST_FILE = c0metjb_rc1/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "kex.c0metjb-rc1";
+				PRODUCT_BUNDLE_IDENTIFIER = "kex.c0metjb-rc2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

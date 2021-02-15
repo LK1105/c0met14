@@ -87,6 +87,7 @@
                         <color key="backgroundColor" systemColor="labelColor"/>
                     </view>
                     <connections>
+                        <outlet property="jb_button" destination="N6e-lR-5xD" id="1m4-DS-E2d"/>
                         <outlet property="ver_stat" destination="B3e-wI-Tih" id="cAZ-0c-F2w"/>
                     </connections>
                 </viewController>

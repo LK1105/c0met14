@@ -7,6 +7,7 @@ This jailbreak is by the community, and was developed open source.
 setuid(0); <br />
 granted .root<br />
 sandbox custom r/w perms.
+posix_spawn ret 0
 
 # Special Thanks to
 @maverickdev1 - utility development<br />

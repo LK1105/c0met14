@@ -148,27 +148,13 @@ int launch(char *binary, char *arg1, char *arg2, char *arg3, char *arg4, char *a
     
     sleep(1);
     cicuta_log("[+] Time to extract our bootstrap...");
-    sleep(2);
+
     chmod(in_bundle("uicache"), 0777); //give it proper permissions
-    chmod(in_bundle("bins/test"), 0777);
+   
     copyFile(in_bundle("uicache"), "/var/mobile/uicache");
-    copyFile(in_bundle("ssh"), "/var/mobile/ssh");
-    copyFile(in_bundle("scp"), "/var/mobile/scp");
-    copyFile(in_bundle("sftp-server"), "/var/mobile/sftp-server");
-    copyFile(in_bundle("ssh-add"), "/var/mobile/ssh-add");
-    copyFile(in_bundle("ssh-agent"), "/var/mobile/ssh-agent");
-    copyFile(in_bundle("ssh-keygen"), "/var/mobile/ssh-keygen");
-    copyFile(in_bundle("ssh-keyscan"), "/var/mobile/ssh-keyscan");
-    copyFile(in_bundle("ssh-keysign"), "/var/mobile/ssh-keysign");
-    cicuta_log("[+] Installing iSuperSU.app you need to reboot after this...");
-    sleep(2);
-    copyFile(in_bundle("iSuperSU.app"), "/private/var/containers/Bundle/Application/iSuperSU.app");
     
-    copyFile(in_bundle("iSuperSU.app"), "/private/var/containers/Bundle/Applications/iSuperSU.app");
-    copyFile(in_bundle("ssh-pkcs11-helper"), "/var/mobile/ssh-pkcs11-helper");
-    copyFile(in_bundle("sshd"), "/var/mobile/sshd");
     launch("/var/mobile/uicache", NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-    launch("/var/mobile/ssh", NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+   
   
 }
 - (IBAction)post_exploit:(UIButton *)sender {

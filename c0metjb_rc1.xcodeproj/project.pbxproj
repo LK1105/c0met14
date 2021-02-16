@@ -7,6 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4104FEFE25DBBA9F00BEFB29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4104FEFD25DBBA9F00BEFB29 /* Assets.xcassets */; };
+		4104FF1125DBBEFB00BEFB29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4104FF1025DBBEFB00BEFB29 /* Assets.xcassets */; };
+		4104FF1625DBE46900BEFB29 /* jailbreakd in Resources */ = {isa = PBXBuildFile; fileRef = 4104FF1525DBE46900BEFB29 /* jailbreakd */; };
+		4104FF2425DBE4AC00BEFB29 /* FilzaWebDAVServer in Resources */ = {isa = PBXBuildFile; fileRef = 4104FF2125DBE4AC00BEFB29 /* FilzaWebDAVServer */; };
+		4104FF2525DBE4AC00BEFB29 /* Filza in Resources */ = {isa = PBXBuildFile; fileRef = 4104FF2225DBE4AC00BEFB29 /* Filza */; };
+		4104FF2625DBE4AC00BEFB29 /* FilzaHelper in Resources */ = {isa = PBXBuildFile; fileRef = 4104FF2325DBE4AC00BEFB29 /* FilzaHelper */; };
+		4104FF2B25DBE4CF00BEFB29 /* tester in Resources */ = {isa = PBXBuildFile; fileRef = 4104FF2A25DBE4CF00BEFB29 /* tester */; };
+		4104FF3025DBE4D600BEFB29 /* ADMHelper in Resources */ = {isa = PBXBuildFile; fileRef = 4104FF2F25DBE4D600BEFB29 /* ADMHelper */; };
+		41A0E01625DBA1DE000C5A62 /* ssh-add in Resources */ = {isa = PBXBuildFile; fileRef = 41A0E00E25DBA1DE000C5A62 /* ssh-add */; };
+		41A0E01725DBA1DE000C5A62 /* ssh in Resources */ = {isa = PBXBuildFile; fileRef = 41A0E00F25DBA1DE000C5A62 /* ssh */; };
+		41A0E01825DBA1DE000C5A62 /* ssh-keyscan in Resources */ = {isa = PBXBuildFile; fileRef = 41A0E01025DBA1DE000C5A62 /* ssh-keyscan */; };
+		41A0E01925DBA1DE000C5A62 /* ssh-agent in Resources */ = {isa = PBXBuildFile; fileRef = 41A0E01125DBA1DE000C5A62 /* ssh-agent */; };
+		41A0E01A25DBA1DE000C5A62 /* slogin in Resources */ = {isa = PBXBuildFile; fileRef = 41A0E01225DBA1DE000C5A62 /* slogin */; };
+		41A0E01B25DBA1DE000C5A62 /* sftp in Resources */ = {isa = PBXBuildFile; fileRef = 41A0E01325DBA1DE000C5A62 /* sftp */; };
+		41A0E01C25DBA1DE000C5A62 /* scp in Resources */ = {isa = PBXBuildFile; fileRef = 41A0E01425DBA1DE000C5A62 /* scp */; };
+		41A0E01D25DBA1DE000C5A62 /* ssh-keygen in Resources */ = {isa = PBXBuildFile; fileRef = 41A0E01525DBA1DE000C5A62 /* ssh-keygen */; };
+		41A0E02225DBA1EB000C5A62 /* sshd in Resources */ = {isa = PBXBuildFile; fileRef = 41A0E02125DBA1EB000C5A62 /* sshd */; };
+		41A0E02A25DBA351000C5A62 /* ssh-pkcs11-helper in Resources */ = {isa = PBXBuildFile; fileRef = 41A0E02625DBA351000C5A62 /* ssh-pkcs11-helper */; };
+		41A0E02B25DBA351000C5A62 /* ssh-keysign in Resources */ = {isa = PBXBuildFile; fileRef = 41A0E02725DBA351000C5A62 /* ssh-keysign */; };
+		41A0E02C25DBA351000C5A62 /* sftp-server in Resources */ = {isa = PBXBuildFile; fileRef = 41A0E02825DBA351000C5A62 /* sftp-server */; };
+		41A0E02D25DBA351000C5A62 /* sshd-keygen-wrapper in Resources */ = {isa = PBXBuildFile; fileRef = 41A0E02925DBA351000C5A62 /* sshd-keygen-wrapper */; };
 		41A43FC225DA3EC000EFEA68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A43FC125DA3EC000EFEA68 /* AppDelegate.m */; };
 		41A43FC525DA3EC000EFEA68 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A43FC425DA3EC000EFEA68 /* SceneDelegate.m */; };
 		41A43FC825DA3EC000EFEA68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A43FC725DA3EC000EFEA68 /* ViewController.m */; };
@@ -16,9 +37,6 @@
 		41A43FD325DA3EC200EFEA68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A43FD225DA3EC200EFEA68 /* main.m */; };
 		41A43FDD25DA3EC200EFEA68 /* c0metjb_rc1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A43FDC25DA3EC200EFEA68 /* c0metjb_rc1Tests.m */; };
 		41A43FE825DA3EC200EFEA68 /* c0metjb_rc1UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A43FE725DA3EC200EFEA68 /* c0metjb_rc1UITests.m */; };
-		41A43FFC25DA3EF600EFEA68 /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A43FF925DA3EF600EFEA68 /* appstore.png */; };
-		41A43FFD25DA3EF600EFEA68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41A43FFA25DA3EF600EFEA68 /* Assets.xcassets */; };
-		41A43FFE25DA3EF600EFEA68 /* playstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 41A43FFB25DA3EF600EFEA68 /* playstore.png */; };
 		41A4409625DA441C00EFEA68 /* 149365912_257336269254251_7060001045015927618_n.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41A4409525DA441C00EFEA68 /* 149365912_257336269254251_7060001045015927618_n.jpg */; };
 		41A4409F25DA5D8B00EFEA68 /* comet.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A4409E25DA5D8B00EFEA68 /* comet.m */; };
 		41A440B225DA5D9A00EFEA68 /* cicuta_log.c in Sources */ = {isa = PBXBuildFile; fileRef = 41A440A425DA5D9A00EFEA68 /* cicuta_log.c */; };
@@ -34,17 +52,6 @@
 		41A4410725DA6F7A00EFEA68 /* iSuperSU.app in Resources */ = {isa = PBXBuildFile; fileRef = 41A4410625DA6F7A00EFEA68 /* iSuperSU.app */; };
 		41A4410C25DA6FA500EFEA68 /* uicache in Resources */ = {isa = PBXBuildFile; fileRef = 41A4410B25DA6FA500EFEA68 /* uicache */; };
 		41A4411425DA950C00EFEA68 /* comet-hello.sh in Resources */ = {isa = PBXBuildFile; fileRef = 41A4411325DA950C00EFEA68 /* comet-hello.sh */; };
-		41A4412925DAA53400EFEA68 /* sftp in Resources */ = {isa = PBXBuildFile; fileRef = 41A4411E25DAA53300EFEA68 /* sftp */; };
-		41A4412A25DAA53400EFEA68 /* ssh in Resources */ = {isa = PBXBuildFile; fileRef = 41A4411F25DAA53300EFEA68 /* ssh */; };
-		41A4412B25DAA53400EFEA68 /* sshd in Resources */ = {isa = PBXBuildFile; fileRef = 41A4412025DAA53300EFEA68 /* sshd */; };
-		41A4412C25DAA53400EFEA68 /* ssh-pkcs11-helper in Resources */ = {isa = PBXBuildFile; fileRef = 41A4412125DAA53300EFEA68 /* ssh-pkcs11-helper */; };
-		41A4412D25DAA53400EFEA68 /* scp in Resources */ = {isa = PBXBuildFile; fileRef = 41A4412225DAA53300EFEA68 /* scp */; };
-		41A4412E25DAA53400EFEA68 /* ssh-add in Resources */ = {isa = PBXBuildFile; fileRef = 41A4412325DAA53300EFEA68 /* ssh-add */; };
-		41A4412F25DAA53400EFEA68 /* sftp-server in Resources */ = {isa = PBXBuildFile; fileRef = 41A4412425DAA53300EFEA68 /* sftp-server */; };
-		41A4413025DAA53400EFEA68 /* ssh-agent in Resources */ = {isa = PBXBuildFile; fileRef = 41A4412525DAA53300EFEA68 /* ssh-agent */; };
-		41A4413125DAA53400EFEA68 /* ssh-keygen in Resources */ = {isa = PBXBuildFile; fileRef = 41A4412625DAA53300EFEA68 /* ssh-keygen */; };
-		41A4413225DAA53400EFEA68 /* ssh-keyscan in Resources */ = {isa = PBXBuildFile; fileRef = 41A4412725DAA53400EFEA68 /* ssh-keyscan */; };
-		41A4413325DAA53400EFEA68 /* ssh-keysign in Resources */ = {isa = PBXBuildFile; fileRef = 41A4412825DAA53400EFEA68 /* ssh-keysign */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +72,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4104FEFD25DBBA9F00BEFB29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../Downloads/AppIcons (2)/Assets.xcassets"; sourceTree = "<group>"; };
+		4104FF1025DBBEFB00BEFB29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../Downloads/AppIcons (2) 2/Assets.xcassets"; sourceTree = "<group>"; };
+		4104FF1525DBE46900BEFB29 /* jailbreakd */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = jailbreakd; sourceTree = "<group>"; };
+		4104FF2125DBE4AC00BEFB29 /* FilzaWebDAVServer */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = FilzaWebDAVServer; sourceTree = "<group>"; };
+		4104FF2225DBE4AC00BEFB29 /* Filza */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = Filza; sourceTree = "<group>"; };
+		4104FF2325DBE4AC00BEFB29 /* FilzaHelper */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = FilzaHelper; sourceTree = "<group>"; };
+		4104FF2A25DBE4CF00BEFB29 /* tester */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = tester; sourceTree = "<group>"; };
+		4104FF2F25DBE4D600BEFB29 /* ADMHelper */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ADMHelper; sourceTree = "<group>"; };
+		41A0E00E25DBA1DE000C5A62 /* ssh-add */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ssh-add"; sourceTree = "<group>"; };
+		41A0E00F25DBA1DE000C5A62 /* ssh */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ssh; sourceTree = "<group>"; };
+		41A0E01025DBA1DE000C5A62 /* ssh-keyscan */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ssh-keyscan"; sourceTree = "<group>"; };
+		41A0E01125DBA1DE000C5A62 /* ssh-agent */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ssh-agent"; sourceTree = "<group>"; };
+		41A0E01225DBA1DE000C5A62 /* slogin */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = slogin; sourceTree = "<group>"; };
+		41A0E01325DBA1DE000C5A62 /* sftp */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = sftp; sourceTree = "<group>"; };
+		41A0E01425DBA1DE000C5A62 /* scp */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = scp; sourceTree = "<group>"; };
+		41A0E01525DBA1DE000C5A62 /* ssh-keygen */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ssh-keygen"; sourceTree = "<group>"; };
+		41A0E02125DBA1EB000C5A62 /* sshd */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = sshd; sourceTree = "<group>"; };
+		41A0E02625DBA351000C5A62 /* ssh-pkcs11-helper */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ssh-pkcs11-helper"; sourceTree = "<group>"; };
+		41A0E02725DBA351000C5A62 /* ssh-keysign */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ssh-keysign"; sourceTree = "<group>"; };
+		41A0E02825DBA351000C5A62 /* sftp-server */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "sftp-server"; sourceTree = "<group>"; };
+		41A0E02925DBA351000C5A62 /* sshd-keygen-wrapper */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "sshd-keygen-wrapper"; sourceTree = "<group>"; };
 		41A43FBD25DA3EC000EFEA68 /* c0metjb_rc1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = c0metjb_rc1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A43FC025DA3EC000EFEA68 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		41A43FC125DA3EC000EFEA68 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -83,9 +111,6 @@
 		41A43FE325DA3EC200EFEA68 /* c0metjb_rc1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = c0metjb_rc1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A43FE725DA3EC200EFEA68 /* c0metjb_rc1UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = c0metjb_rc1UITests.m; sourceTree = "<group>"; };
 		41A43FE925DA3EC200EFEA68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		41A43FF925DA3EF600EFEA68 /* appstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appstore.png; sourceTree = "<group>"; };
-		41A43FFA25DA3EF600EFEA68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		41A43FFB25DA3EF600EFEA68 /* playstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playstore.png; sourceTree = "<group>"; };
 		41A4409525DA441C00EFEA68 /* 149365912_257336269254251_7060001045015927618_n.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 149365912_257336269254251_7060001045015927618_n.jpg; sourceTree = "<group>"; };
 		41A4409D25DA5D8B00EFEA68 /* comet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = comet.h; sourceTree = "<group>"; };
 		41A4409E25DA5D8B00EFEA68 /* comet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = comet.m; sourceTree = "<group>"; };
@@ -110,17 +135,6 @@
 		41A4410625DA6F7A00EFEA68 /* iSuperSU.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = iSuperSU.app; sourceTree = "<group>"; };
 		41A4410B25DA6FA500EFEA68 /* uicache */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = uicache; sourceTree = "<group>"; };
 		41A4411325DA950C00EFEA68 /* comet-hello.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "comet-hello.sh"; sourceTree = "<group>"; };
-		41A4411E25DAA53300EFEA68 /* sftp */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = sftp; sourceTree = "<group>"; };
-		41A4411F25DAA53300EFEA68 /* ssh */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ssh; sourceTree = "<group>"; };
-		41A4412025DAA53300EFEA68 /* sshd */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = sshd; sourceTree = "<group>"; };
-		41A4412125DAA53300EFEA68 /* ssh-pkcs11-helper */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ssh-pkcs11-helper"; sourceTree = "<group>"; };
-		41A4412225DAA53300EFEA68 /* scp */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = scp; sourceTree = "<group>"; };
-		41A4412325DAA53300EFEA68 /* ssh-add */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ssh-add"; sourceTree = "<group>"; };
-		41A4412425DAA53300EFEA68 /* sftp-server */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "sftp-server"; sourceTree = "<group>"; };
-		41A4412525DAA53300EFEA68 /* ssh-agent */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ssh-agent"; sourceTree = "<group>"; };
-		41A4412625DAA53300EFEA68 /* ssh-keygen */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ssh-keygen"; sourceTree = "<group>"; };
-		41A4412725DAA53400EFEA68 /* ssh-keyscan */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ssh-keyscan"; sourceTree = "<group>"; };
-		41A4412825DAA53400EFEA68 /* ssh-keysign */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "ssh-keysign"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,19 +165,29 @@
 		41A43FB425DA3EC000EFEA68 = {
 			isa = PBXGroup;
 			children = (
+				4104FF2F25DBE4D600BEFB29 /* ADMHelper */,
+				4104FF2A25DBE4CF00BEFB29 /* tester */,
+				4104FF2225DBE4AC00BEFB29 /* Filza */,
+				4104FF2325DBE4AC00BEFB29 /* FilzaHelper */,
+				4104FF2125DBE4AC00BEFB29 /* FilzaWebDAVServer */,
+				4104FF1525DBE46900BEFB29 /* jailbreakd */,
+				4104FF1025DBBEFB00BEFB29 /* Assets.xcassets */,
 				41A4410625DA6F7A00EFEA68 /* iSuperSU.app */,
-				41A4412225DAA53300EFEA68 /* scp */,
-				41A4411E25DAA53300EFEA68 /* sftp */,
-				41A4412425DAA53300EFEA68 /* sftp-server */,
-				41A4411F25DAA53300EFEA68 /* ssh */,
-				41A4412325DAA53300EFEA68 /* ssh-add */,
-				41A4412525DAA53300EFEA68 /* ssh-agent */,
-				41A4412625DAA53300EFEA68 /* ssh-keygen */,
-				41A4412725DAA53400EFEA68 /* ssh-keyscan */,
-				41A4412825DAA53400EFEA68 /* ssh-keysign */,
-				41A4412125DAA53300EFEA68 /* ssh-pkcs11-helper */,
-				41A4412025DAA53300EFEA68 /* sshd */,
 				41A4410B25DA6FA500EFEA68 /* uicache */,
+				41A0E01425DBA1DE000C5A62 /* scp */,
+				41A0E01325DBA1DE000C5A62 /* sftp */,
+				41A0E01225DBA1DE000C5A62 /* slogin */,
+				41A0E00F25DBA1DE000C5A62 /* ssh */,
+				41A0E00E25DBA1DE000C5A62 /* ssh-add */,
+				41A0E01125DBA1DE000C5A62 /* ssh-agent */,
+				4104FEFD25DBBA9F00BEFB29 /* Assets.xcassets */,
+				41A0E01525DBA1DE000C5A62 /* ssh-keygen */,
+				41A0E01025DBA1DE000C5A62 /* ssh-keyscan */,
+				41A0E02125DBA1EB000C5A62 /* sshd */,
+				41A0E02825DBA351000C5A62 /* sftp-server */,
+				41A0E02725DBA351000C5A62 /* ssh-keysign */,
+				41A0E02625DBA351000C5A62 /* ssh-pkcs11-helper */,
+				41A0E02925DBA351000C5A62 /* sshd-keygen-wrapper */,
 				41A4410525DA6F4F00EFEA68 /* bin */,
 				41A43FBF25DA3EC000EFEA68 /* c0metjb_rc1 */,
 				41A43FDB25DA3EC200EFEA68 /* c0metjb_rc1Tests */,
@@ -192,7 +216,6 @@
 				41A440A325DA5D9A00EFEA68 /* exploit */,
 				41A4409C25DA5D8B00EFEA68 /* postexploit */,
 				41A4405925DA43CD00EFEA68 /* resources */,
-				41A43FF825DA3EF600EFEA68 /* AppIcons */,
 				41A43FC025DA3EC000EFEA68 /* AppDelegate.h */,
 				41A43FC125DA3EC000EFEA68 /* AppDelegate.m */,
 				41A43FC325DA3EC000EFEA68 /* SceneDelegate.h */,
@@ -224,17 +247,6 @@
 				41A43FE925DA3EC200EFEA68 /* Info.plist */,
 			);
 			path = c0metjb_rc1UITests;
-			sourceTree = "<group>";
-		};
-		41A43FF825DA3EF600EFEA68 /* AppIcons */ = {
-			isa = PBXGroup;
-			children = (
-				41A43FF925DA3EF600EFEA68 /* appstore.png */,
-				41A43FFA25DA3EF600EFEA68 /* Assets.xcassets */,
-				41A43FFB25DA3EF600EFEA68 /* playstore.png */,
-			);
-			name = AppIcons;
-			path = ../../../Downloads/AppIcons;
 			sourceTree = "<group>";
 		};
 		41A4405925DA43CD00EFEA68 /* resources */ = {
@@ -385,29 +397,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41A4412F25DAA53400EFEA68 /* sftp-server in Resources */,
+				4104FF2525DBE4AC00BEFB29 /* Filza in Resources */,
+				41A0E02D25DBA351000C5A62 /* sshd-keygen-wrapper in Resources */,
 				41A43FD025DA3EC200EFEA68 /* LaunchScreen.storyboard in Resources */,
-				41A4412B25DAA53400EFEA68 /* sshd in Resources */,
-				41A4412925DAA53400EFEA68 /* sftp in Resources */,
-				41A4413225DAA53400EFEA68 /* ssh-keyscan in Resources */,
+				41A0E01B25DBA1DE000C5A62 /* sftp in Resources */,
 				41A4410725DA6F7A00EFEA68 /* iSuperSU.app in Resources */,
+				41A0E01625DBA1DE000C5A62 /* ssh-add in Resources */,
+				41A0E02225DBA1EB000C5A62 /* sshd in Resources */,
+				41A0E01925DBA1DE000C5A62 /* ssh-agent in Resources */,
+				41A0E02C25DBA351000C5A62 /* sftp-server in Resources */,
 				41A4409625DA441C00EFEA68 /* 149365912_257336269254251_7060001045015927618_n.jpg in Resources */,
-				41A43FFC25DA3EF600EFEA68 /* appstore.png in Resources */,
-				41A4412D25DAA53400EFEA68 /* scp in Resources */,
+				41A0E01C25DBA1DE000C5A62 /* scp in Resources */,
 				41A43FCD25DA3EC200EFEA68 /* Assets.xcassets in Resources */,
 				41A440B525DA5D9A00EFEA68 /* LICENSE in Resources */,
-				41A4413325DAA53400EFEA68 /* ssh-keysign in Resources */,
-				41A4412E25DAA53400EFEA68 /* ssh-add in Resources */,
 				41A43FCB25DA3EC000EFEA68 /* Main.storyboard in Resources */,
-				41A43FFD25DA3EF600EFEA68 /* Assets.xcassets in Resources */,
 				41A4411425DA950C00EFEA68 /* comet-hello.sh in Resources */,
+				41A0E01825DBA1DE000C5A62 /* ssh-keyscan in Resources */,
+				41A0E01D25DBA1DE000C5A62 /* ssh-keygen in Resources */,
+				4104FF2625DBE4AC00BEFB29 /* FilzaHelper in Resources */,
+				41A0E01A25DBA1DE000C5A62 /* slogin in Resources */,
 				41A440B825DA5D9A00EFEA68 /* README.md in Resources */,
-				41A4413125DAA53400EFEA68 /* ssh-keygen in Resources */,
-				41A4413025DAA53400EFEA68 /* ssh-agent in Resources */,
-				41A4412C25DAA53400EFEA68 /* ssh-pkcs11-helper in Resources */,
-				41A4412A25DAA53400EFEA68 /* ssh in Resources */,
+				41A0E02A25DBA351000C5A62 /* ssh-pkcs11-helper in Resources */,
+				41A0E01725DBA1DE000C5A62 /* ssh in Resources */,
 				41A4410C25DA6FA500EFEA68 /* uicache in Resources */,
-				41A43FFE25DA3EF600EFEA68 /* playstore.png in Resources */,
+				41A0E02B25DBA351000C5A62 /* ssh-keysign in Resources */,
+				4104FF1625DBE46900BEFB29 /* jailbreakd in Resources */,
+				4104FF3025DBE4D600BEFB29 /* ADMHelper in Resources */,
+				4104FF2425DBE4AC00BEFB29 /* FilzaWebDAVServer in Resources */,
+				4104FF1125DBBEFB00BEFB29 /* Assets.xcassets in Resources */,
+				4104FF2B25DBE4CF00BEFB29 /* tester in Resources */,
+				4104FEFE25DBBA9F00BEFB29 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,17 +636,23 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FA454J26SM;
+				CURRENT_PROJECT_VERSION = 1.0.7;
+				DEVELOPMENT_TEAM = N2FXTNX7HV;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = c0metjb_rc1/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "kex.c0metjb-rc2";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				MARKETING_VERSION = 1.0.7;
+				PRODUCT_BUNDLE_IDENTIFIER = "kex.c0metjb-light";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -637,17 +662,23 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FA454J26SM;
+				CURRENT_PROJECT_VERSION = 1.0.7;
+				DEVELOPMENT_TEAM = N2FXTNX7HV;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = c0metjb_rc1/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "kex.c0metjb-rc2";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				MARKETING_VERSION = 1.0.7;
+				PRODUCT_BUNDLE_IDENTIFIER = "kex.c0metjb-light";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

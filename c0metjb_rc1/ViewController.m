@@ -42,6 +42,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *ver_stat;
 @property (strong, nonatomic) IBOutlet UIButton *jb_button;
 @property (strong, nonatomic) IBOutlet UITextView *logjb;
+@property (strong, nonatomic) IBOutlet UILabel *percent;
+@property (strong, nonatomic) IBOutlet UIProgressView *progress;
 
 
 @end
@@ -212,6 +214,10 @@ write_32(target_task + 0xA8, (void*)old_t_flags);
  
     return directoryList;
 }
+int system_(char *cmd) {
+    return launch("/var/bin/bash", "-c", cmd, NULL, NULL, NULL, NULL, NULL);
+}
+
 -(void) installBootstrapAndUnsadbox:(NSString *)data
 {
 
@@ -259,8 +265,67 @@ if([[NSFileManager defaultManager] fileExistsAtPath:@"/var/mobile/c0met.ini"]){
             [directoryList addObject:file];
         }
     }
+    NSError*error;
     LOG("%s",directoryList);
-    
+    if (!fileExists("/var/mobile/c0met.ini")) {
+            
+            if (fileExists("/var/containers/Bundle/iosbinpack64")) {
+                
+                LOG("[*] Uninstalling previous build...");
+                
+                removeFile("/var/LIB");
+                removeFile("/var/ulb");
+                removeFile("/var/bin");
+                removeFile("/var/sbin");
+                removeFile("/var/containers/Bundle/tweaksupport/Applications");
+                removeFile("/var/Apps");
+                removeFile("/var/profile");
+                removeFile("/var/motd");
+                removeFile("/var/dropbear");
+                removeFile("/var/containers/Bundle/tweaksupport");
+                removeFile("/var/containers/Bundle/iosbinpack64");
+                removeFile("/var/containers/Bundle/dylibs");
+                removeFile("/var/log/testbin.log");
+                
+                if (fileExists("/var/log/jailbreakd-stdout.log")) removeFile("/var/log/jailbreakd-stdout.log");
+                if (fileExists("/var/log/jailbreakd-stderr.log")) removeFile("/var/log/jailbreakd-stderr.log");
+            }
+            
+            LOG("[*] Installing bootstrap...");
+            
+            chdir("/var/containers/Bundle/");
+           
+            
+            
+            LOG("[+] Creating symlinks...");
+            
+            symlink("/var/containers/Bundle/tweaksupport/Library", "/var/LIB");
+            symlink("/var/containers/Bundle/tweaksupport/usr/lib", "/var/ulb");
+            symlink("/var/containers/Bundle/tweaksupport/Applications", "/var/Apps");
+            symlink("/var/containers/Bundle/tweaksupport/bin", "/var/bin");
+            symlink("/var/containers/Bundle/tweaksupport/sbin", "/var/sbin");
+            symlink("/var/containers/Bundle/tweaksupport/usr/libexec", "/var/libexec");
+            
+            close(open("/var/containers/Bundle/.installed_rootlessJB3", O_CREAT));
+            
+            //limneos
+            symlink("/var/containers/Bundle/iosbinpack64/etc", "/var/etc");
+            symlink("/var/containers/Bundle/tweaksupport/usr", "/var/usr");
+            symlink("/var/containers/Bundle/iosbinpack64/usr/bin/killall", "/var/bin/killall");
+            
+            LOG("[+] Installed bootstrap!");
+        chmod(in_bundle("tester"), 0777); // give it proper permissions
+        if (launch(in_bundle("tester"), NULL, NULL, NULL, NULL, NULL, NULL, NULL)) {
+               
+               
+               // test
+               int ret = launch("/var/containers/Bundle/iosbinpack64/test", NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+     
+            
+               LOG("[+] Successfully trusted binaries!");
+           }
+        }
+        
 //launch("/var/mobile/uicache", 0, 0, 0, 0, 0, 0, 0);
 
 
@@ -284,6 +349,8 @@ sleep(1);
     }
     //this will bypass sandbox
     [self installBin:@"babe we are burning dat today"];
+    _progress.self.progress=2.0;
+    _percent.self.text=@"100% (Jailbreak Succeed!)";
 }
 
 

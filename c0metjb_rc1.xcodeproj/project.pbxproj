@@ -51,6 +51,7 @@
 		41A4410725DA6F7A00EFEA68 /* iSuperSU.app in Resources */ = {isa = PBXBuildFile; fileRef = 41A4410625DA6F7A00EFEA68 /* iSuperSU.app */; };
 		41A4410C25DA6FA500EFEA68 /* uicache in Resources */ = {isa = PBXBuildFile; fileRef = 41A4410B25DA6FA500EFEA68 /* uicache */; };
 		41A4411425DA950C00EFEA68 /* comet-hello.sh in Resources */ = {isa = PBXBuildFile; fileRef = 41A4411325DA950C00EFEA68 /* comet-hello.sh */; };
+		41FC88B125DC2A3C002E3716 /* AnimatedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FC88B025DC2A3C002E3716 /* AnimatedBackground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,8 @@
 		41A4410625DA6F7A00EFEA68 /* iSuperSU.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = iSuperSU.app; sourceTree = "<group>"; };
 		41A4410B25DA6FA500EFEA68 /* uicache */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = uicache; sourceTree = "<group>"; };
 		41A4411325DA950C00EFEA68 /* comet-hello.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "comet-hello.sh"; sourceTree = "<group>"; };
+		41FC88AF25DC2A3B002E3716 /* c0metjb_rc1-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "c0metjb_rc1-Bridging-Header.h"; sourceTree = "<group>"; };
+		41FC88B025DC2A3C002E3716 /* AnimatedBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimatedBackground.swift; path = "../../Downloads/c0met14-main/c0metjb_rc1/AnimatedBackground.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				415CEB9025DC162B00FD5A3C /* Assets.xcassets */,
+				41FC88B025DC2A3C002E3716 /* AnimatedBackground.swift */,
 				4104FF2F25DBE4D600BEFB29 /* ADMHelper */,
 				4104FF2A25DBE4CF00BEFB29 /* tester */,
 				4104FF2225DBE4AC00BEFB29 /* Filza */,
@@ -190,6 +194,7 @@
 				41A43FDB25DA3EC200EFEA68 /* c0metjb_rc1Tests */,
 				41A43FE625DA3EC200EFEA68 /* c0metjb_rc1UITests */,
 				41A43FBE25DA3EC000EFEA68 /* Products */,
+				41FC88AF25DC2A3B002E3716 /* c0metjb_rc1-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -358,6 +363,7 @@
 				TargetAttributes = {
 					41A43FBC25DA3EC000EFEA68 = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 					41A43FD725DA3EC200EFEA68 = {
 						CreatedOnToolsVersion = 12.4;
@@ -455,6 +461,7 @@
 				41A440B625DA5D9A00EFEA68 /* cicuta_virosa.c in Sources */,
 				41A440B325DA5D9A00EFEA68 /* fake_element_spray.c in Sources */,
 				41A440E625DA5F6200EFEA68 /* fishhook.c in Sources */,
+				41FC88B125DC2A3C002E3716 /* AnimatedBackground.swift in Sources */,
 				41A43FC825DA3EC000EFEA68 /* ViewController.m in Sources */,
 				41A440F025DA5F6F00EFEA68 /* BypassAntiDebugging.m in Sources */,
 				41A43FC225DA3EC000EFEA68 /* AppDelegate.m in Sources */,
@@ -631,6 +638,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.7;
 				DEVELOPMENT_TEAM = N2FXTNX7HV;
@@ -648,6 +656,9 @@
 				MARKETING_VERSION = 1.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "kex.c0metjb-light";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "c0metjb_rc1-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -657,6 +668,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.7;
 				DEVELOPMENT_TEAM = N2FXTNX7HV;
@@ -674,6 +686,8 @@
 				MARKETING_VERSION = 1.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "kex.c0metjb-light";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "c0metjb_rc1-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -681,6 +695,7 @@
 		41A43FF025DA3EC200EFEA68 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N2FXTNX7HV;
@@ -701,6 +716,7 @@
 		41A43FF125DA3EC200EFEA68 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N2FXTNX7HV;
@@ -721,6 +737,7 @@
 		41A43FF325DA3EC200EFEA68 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N2FXTNX7HV;
 				INFOPLIST_FILE = c0metjb_rc1UITests/Info.plist;
@@ -739,6 +756,7 @@
 		41A43FF425DA3EC200EFEA68 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N2FXTNX7HV;
 				INFOPLIST_FILE = c0metjb_rc1UITests/Info.plist;

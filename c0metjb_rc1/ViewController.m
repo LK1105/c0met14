@@ -44,6 +44,7 @@
 @property (strong, nonatomic) IBOutlet UITextView *logjb;
 @property (strong, nonatomic) IBOutlet UILabel *percent;
 @property (strong, nonatomic) IBOutlet UIProgressView *progress;
+@property (strong, nonatomic) IBOutlet UIButton *creditsButton;
 
 
 @end
@@ -353,6 +354,17 @@ sleep(1);
     _percent.self.text=@"100% (Jailbreak Succeed!)";
 }
 
+- (IBAction)creditButton:(UIButton *)sender {
+    NSString *message = [NSString stringWithFormat:@"c0met\n\nDeveloped by @maverickdev1\n\nExploit by @ModernPwner\n\nSandbox read/write privileges by @brandonplank"];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Credits" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *Done = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+        [alertController dismissViewControllerAnimated:true completion:nil];
+    }];
+    [alertController addAction:Done];
+    [alertController setPreferredAction:Done];
+    [self presentViewController:alertController animated:true completion:nil];
+}
 
 
 @end

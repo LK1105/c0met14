@@ -9,6 +9,9 @@
 
 @interface ViewController : UIViewController
 
+  - (IBAction)post_exploit:(UIButton *)sender;
+- (IBAction)creditButton:(UIButton *)sender;
+
 
 @end
 

@@ -26,6 +26,7 @@
 		41FC895E25DCE3CD002E3716 /* sandbox_util.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FC895D25DCE3CD002E3716 /* sandbox_util.m */; };
 		41FC899B25DD0372002E3716 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 41FC899725DD0372002E3716 /* fishhook.c */; };
 		41FC899C25DD0372002E3716 /* BypassAntiDebugging.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FC899925DD0372002E3716 /* BypassAntiDebugging.m */; };
+		41FC89A525DD69EB002E3716 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41FC89A425DD69EA002E3716 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		41FC899825DD0372002E3716 /* fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fishhook.h; path = c0met_light/fishhook.h; sourceTree = SOURCE_ROOT; };
 		41FC899925DD0372002E3716 /* BypassAntiDebugging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BypassAntiDebugging.m; path = c0met_light/BypassAntiDebugging.m; sourceTree = SOURCE_ROOT; };
 		41FC899A25DD0372002E3716 /* BypassAntiDebugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BypassAntiDebugging.h; path = c0met_light/BypassAntiDebugging.h; sourceTree = SOURCE_ROOT; };
+		41FC89A425DD69EA002E3716 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 		41FC88F525DCE32C002E3716 = {
 			isa = PBXGroup;
 			children = (
+				41FC89A425DD69EA002E3716 /* Assets.xcassets */,
 				41FC890025DCE32C002E3716 /* c0met_light */,
 				41FC891725DCE32E002E3716 /* c0met_lightTests */,
 				41FC892225DCE32E002E3716 /* c0met_lightUITests */,
@@ -312,6 +315,7 @@
 				41FC890B25DCE32E002E3716 /* Assets.xcassets in Resources */,
 				41FC894C25DCE35C002E3716 /* README.md in Resources */,
 				41FC894925DCE35C002E3716 /* LICENSE in Resources */,
+				41FC89A525DD69EB002E3716 /* Assets.xcassets in Resources */,
 				41FC890925DCE32C002E3716 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

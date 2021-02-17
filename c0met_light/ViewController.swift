@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet var ios: UILabel!
+    @IBOutlet var imdodel: UILabel!
     @IBOutlet var buttonjb: UIButton!
     @IBOutlet var mm: UIButton!
     let gradient = CAGradientLayer()
@@ -45,7 +47,7 @@ class ViewController: UIViewController {
             }
             
             let gradientChangeAnimation = CABasicAnimation(keyPath: "colors")
-            gradientChangeAnimation.duration = 12.0
+            gradientChangeAnimation.duration = 2.0
             gradientChangeAnimation.toValue = gradientSet[currentGradient]
             gradientChangeAnimation.fillMode = CAMediaTimingFillMode.forwards
             gradientChangeAnimation.isRemovedOnCompletion = false
@@ -65,7 +67,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-   
+        let ioss = UIDevice().systemVersion
+    
+        let idevice = UIDevice().self.model
+        imdodel.self.text=idevice ;
+        ios.self.text=ioss;
+        
         disable_pt_deny_attach();
         disable_sysctl_debugger_checking();
             
@@ -90,10 +97,10 @@ class ViewController: UIViewController {
     }
         func exploit(){
         
-            buttonjb.setTitle("done.", for: .normal);
+            buttonjb.setTitle("bye.", for: .disabled);
             let task_pack = cicuta_virosa();
            
-            if(killsandbox(task_pack)==1){
+            if(disable_sandbox(task_pack)==1){
                 let alert = UIAlertController(title: "c0m@jb", message: "Jailbreak was Successfull\npatched permissions\npatched off_sandbox_slot\nInstalled Bootstrap Data", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)

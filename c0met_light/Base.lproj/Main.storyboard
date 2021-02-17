@@ -31,7 +31,21 @@
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Support iOS14.0 - 14.3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vC5-aB-bHE">
                                         <rect key="frame" x="21" y="114" width="332" height="145"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
+                                        <color key="textColor" systemColor="linkColor"/>
+                                        <color key="highlightedColor" systemColor="linkColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23Y-hn-mOr">
+                                        <rect key="frame" x="21" y="681" width="332" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
+                                        <color key="textColor" systemColor="linkColor"/>
+                                        <color key="highlightedColor" systemColor="linkColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gP7-tL-3el">
+                                        <rect key="frame" x="21" y="717" width="332" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
                                         <color key="textColor" systemColor="linkColor"/>
                                         <color key="highlightedColor" systemColor="linkColor"/>
                                     </label>
@@ -65,13 +79,13 @@
                                         <state key="normal" title="@_bplank"/>
                                     </button>
                                     <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQH-2h-pC7">
-                                        <rect key="frame" x="80" y="692" width="214" height="60"/>
+                                        <rect key="frame" x="80" y="613" width="214" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <color key="tintColor" systemColor="linkColor"/>
                                         <state key="normal" title="Jailbreak">
-                                            <color key="titleColor" systemColor="systemBlueColor"/>
+                                            <color key="titleColor" systemColor="linkColor"/>
                                         </state>
                                         <connections>
                                             <action selector="run_exploit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hnS-cF-uS8"/>
@@ -87,6 +101,8 @@
                     <connections>
                         <outlet property="View" destination="K61-fA-UX1" id="pE4-mY-KLW"/>
                         <outlet property="buttonjb" destination="lQH-2h-pC7" id="h42-c6-pvk"/>
+                        <outlet property="imdodel" destination="23Y-hn-mOr" id="ROv-8Q-B4j"/>
+                        <outlet property="ios" destination="gP7-tL-3el" id="43N-R8-Nrc"/>
                         <outlet property="mm" destination="lQH-2h-pC7" id="9gs-Ur-mg2"/>
                     </connections>
                 </viewController>
@@ -104,9 +120,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

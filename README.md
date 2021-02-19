@@ -11,8 +11,8 @@ All iOS devices from 14.0 - 14.3
 
 ### Status:
 
-Exploit: Working
-Privilege Escalation: Working
+Exploit: Working <br
+Privilege Escalation: Working <br
 
 
 # Special Thanks to

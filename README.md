@@ -1,5 +1,5 @@
 <center>
-  <a href="#"><img src="https://i.imgur.com/5I8EKUO.png" alt="Logo" width="40%"></a>
+  <a href="#"><img src="https://i.imgur.com/WlcHi3M.png" alt="Logo" width="40%"></a>
 </center>
 
 Project for the c0met jailbreak. 

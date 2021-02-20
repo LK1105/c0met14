@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4198D17C25DEF4BF0076FB60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4198D17B25DEF4BF0076FB60 /* Assets.xcassets */; };
+		412FAB8925E014AA00CA7E85 /* patchfinder64.c in Sources */ = {isa = PBXBuildFile; fileRef = 412FAB8825E014AA00CA7E85 /* patchfinder64.c */; };
+		412FABAE25E026F000CA7E85 /* by.png in Resources */ = {isa = PBXBuildFile; fileRef = 412FABAD25E026F000CA7E85 /* by.png */; };
+		412FABB325E0271D00CA7E85 /* c14.png in Resources */ = {isa = PBXBuildFile; fileRef = 412FABB225E0271D00CA7E85 /* c14.png */; };
+		412FABB825E0273D00CA7E85 /* c144.png in Resources */ = {isa = PBXBuildFile; fileRef = 412FABB725E0273D00CA7E85 /* c144.png */; };
+		412FABBD25E0275200CA7E85 /* console.png in Resources */ = {isa = PBXBuildFile; fileRef = 412FABBC25E0275200CA7E85 /* console.png */; };
+		412FABC225E0279200CA7E85 /* buttonn.png in Resources */ = {isa = PBXBuildFile; fileRef = 412FABC125E0279100CA7E85 /* buttonn.png */; };
+		4153056725DFE121003CE748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4153056625DFE121003CE748 /* Assets.xcassets */; };
 		4198D18125DEF4DB0076FB60 /* unnamed.png in Resources */ = {isa = PBXBuildFile; fileRef = 4198D18025DEF4DB0076FB60 /* unnamed.png */; };
 		41FC890225DCE32C002E3716 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FC890125DCE32C002E3716 /* AppDelegate.swift */; };
 		41FC890425DCE32C002E3716 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FC890325DCE32C002E3716 /* SceneDelegate.swift */; };
@@ -48,7 +54,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4198D17B25DEF4BF0076FB60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Downloads/AppIcons/Assets.xcassets; sourceTree = "<group>"; };
+		412FAB8725E014AA00CA7E85 /* patchfinder64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = patchfinder64.h; sourceTree = "<group>"; };
+		412FAB8825E014AA00CA7E85 /* patchfinder64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = patchfinder64.c; sourceTree = "<group>"; };
+		412FAB8E25E01A6E00CA7E85 /* IOKitLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOKitLib.h; sourceTree = "<group>"; };
+		412FAB8F25E01A6E00CA7E85 /* IOTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOTypes.h; sourceTree = "<group>"; };
+		412FAB9025E01A6E00CA7E85 /* IOKitKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOKitKeys.h; sourceTree = "<group>"; };
+		412FAB9125E01A6E00CA7E85 /* IOReturn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOReturn.h; sourceTree = "<group>"; };
+		412FAB9225E01A6E00CA7E85 /* OSMessageNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSMessageNotification.h; sourceTree = "<group>"; };
+		412FAB9725E01A9A00CA7E85 /* jelbrekLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = jelbrekLib.a; sourceTree = "<group>"; };
+		412FAB9825E01A9A00CA7E85 /* IOKit.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = IOKit.tbd; sourceTree = "<group>"; };
+		412FAB9925E01A9A00CA7E85 /* libjb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libjb.a; sourceTree = "<group>"; };
+		412FABAD25E026F000CA7E85 /* by.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = by.png; sourceTree = "<group>"; };
+		412FABB225E0271D00CA7E85 /* c14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = c14.png; sourceTree = "<group>"; };
+		412FABB725E0273D00CA7E85 /* c144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = c144.png; sourceTree = "<group>"; };
+		412FABBC25E0275200CA7E85 /* console.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = console.png; sourceTree = "<group>"; };
+		412FABC125E0279100CA7E85 /* buttonn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonn.png; sourceTree = "<group>"; };
+		4153056625DFE121003CE748 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../Downloads/AppIcons (4)/Assets.xcassets"; sourceTree = "<group>"; };
 		4198D18025DEF4DB0076FB60 /* unnamed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unnamed.png; sourceTree = "<group>"; };
 		41FC88FE25DCE32C002E3716 /* c0met_light.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = c0met_light.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41FC890125DCE32C002E3716 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +106,7 @@
 		41FC899825DD0372002E3716 /* fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fishhook.h; path = c0met_light/fishhook.h; sourceTree = SOURCE_ROOT; };
 		41FC899925DD0372002E3716 /* BypassAntiDebugging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BypassAntiDebugging.m; path = c0met_light/BypassAntiDebugging.m; sourceTree = SOURCE_ROOT; };
 		41FC899A25DD0372002E3716 /* BypassAntiDebugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BypassAntiDebugging.h; path = c0met_light/BypassAntiDebugging.h; sourceTree = SOURCE_ROOT; };
+		41FE047D25DF138A004DBD7F /* NimbusSanL-Bol.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NimbusSanL-Bol.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +134,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		412FAB8D25E01A6E00CA7E85 /* IOKit */ = {
+			isa = PBXGroup;
+			children = (
+				412FAB9625E01A9A00CA7E85 /* libs */,
+				412FAB8E25E01A6E00CA7E85 /* IOKitLib.h */,
+				412FAB8F25E01A6E00CA7E85 /* IOTypes.h */,
+				412FAB9025E01A6E00CA7E85 /* IOKitKeys.h */,
+				412FAB9125E01A6E00CA7E85 /* IOReturn.h */,
+				412FAB9225E01A6E00CA7E85 /* OSMessageNotification.h */,
+			);
+			path = IOKit;
+			sourceTree = "<group>";
+		};
+		412FAB9625E01A9A00CA7E85 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				412FAB9725E01A9A00CA7E85 /* jelbrekLib.a */,
+				412FAB9825E01A9A00CA7E85 /* IOKit.tbd */,
+				412FAB9925E01A9A00CA7E85 /* libjb.a */,
+			);
+			name = libs;
+			path = c0met_light/libs;
+			sourceTree = SOURCE_ROOT;
+		};
 		41FC88F525DCE32C002E3716 = {
 			isa = PBXGroup;
 			children = (
@@ -135,7 +181,16 @@
 		41FC890025DCE32C002E3716 /* c0met_light */ = {
 			isa = PBXGroup;
 			children = (
-				4198D17B25DEF4BF0076FB60 /* Assets.xcassets */,
+				412FABC125E0279100CA7E85 /* buttonn.png */,
+				412FABBC25E0275200CA7E85 /* console.png */,
+				412FABB225E0271D00CA7E85 /* c14.png */,
+				412FABAD25E026F000CA7E85 /* by.png */,
+				412FABB725E0273D00CA7E85 /* c144.png */,
+				412FAB8D25E01A6E00CA7E85 /* IOKit */,
+				4153056625DFE121003CE748 /* Assets.xcassets */,
+				412FAB8825E014AA00CA7E85 /* patchfinder64.c */,
+				412FAB8725E014AA00CA7E85 /* patchfinder64.h */,
+				41FE047D25DF138A004DBD7F /* NimbusSanL-Bol.otf */,
 				41FC898125DCE84C002E3716 /* jb_BridgingHeader.h */,
 				41FC89A025DD0855002E3716 /* bins */,
 				41FC893425DCE34A002E3716 /* 14exp */,
@@ -315,12 +370,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				4198D18125DEF4DB0076FB60 /* unnamed.png in Resources */,
+				412FABB825E0273D00CA7E85 /* c144.png in Resources */,
 				41FC890E25DCE32E002E3716 /* LaunchScreen.storyboard in Resources */,
 				41FC890B25DCE32E002E3716 /* Assets.xcassets in Resources */,
 				41FC894C25DCE35C002E3716 /* README.md in Resources */,
+				412FABAE25E026F000CA7E85 /* by.png in Resources */,
+				4153056725DFE121003CE748 /* Assets.xcassets in Resources */,
+				412FABB325E0271D00CA7E85 /* c14.png in Resources */,
+				412FABC225E0279200CA7E85 /* buttonn.png in Resources */,
 				41FC894925DCE35C002E3716 /* LICENSE in Resources */,
-				4198D17C25DEF4BF0076FB60 /* Assets.xcassets in Resources */,
 				41FC890925DCE32C002E3716 /* Main.storyboard in Resources */,
+				412FABBD25E0275200CA7E85 /* console.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +414,7 @@
 				41FC894725DCE35C002E3716 /* fake_element_spray.c in Sources */,
 				41FC894825DCE35C002E3716 /* descriptors_utils.c in Sources */,
 				41FC890225DCE32C002E3716 /* AppDelegate.swift in Sources */,
+				412FAB8925E014AA00CA7E85 /* patchfinder64.c in Sources */,
 				41FC894A25DCE35C002E3716 /* cicuta_virosa.c in Sources */,
 				41FC890425DCE32C002E3716 /* SceneDelegate.swift in Sources */,
 				41FC894525DCE35C002E3716 /* cicuta_log.c in Sources */,
@@ -542,6 +603,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/c0met_light/libs",
+				);
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "kex.c0met-light";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -567,6 +632,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/c0met_light/libs",
 				);
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "kex.c0met-light";

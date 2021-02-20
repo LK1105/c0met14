@@ -71,12 +71,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let ioss = UIDevice().systemVersion
-    
-        let idevice = UIDevice().self.model
-        imdodel.self.text=idevice ;
-        ios.self.text=ioss;
-        
+  
         disable_pt_deny_attach();
         disable_sysctl_debugger_checking();
             
@@ -102,6 +97,7 @@ class ViewController: UIViewController {
         
     }
         func exploit(){
+            
             buttonjb.setTitle("Exploiting...", for: .disabled);
             buttonjb.self.isEnabled = true
             for n in 1...1000 {
@@ -130,7 +126,8 @@ class ViewController: UIViewController {
                                     let alert = UIAlertController(title: "c0m@jb", message: "Jailbreak was Successfull\npatched permissions\npatched off_sandbox_slot\nInstalled Bootstrap Data", preferredStyle: UIAlertController.Style.alert)
                                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                                     self.present(alert, animated: true, completion: nil)
-                                    if(task_pack==70896){
+                                
+                                    if(task_pack == 69){
                                         let alert = UIAlertController(title: "c0m@ - exploit", message: "task_port returned 0x0\nyou should try again.", preferredStyle: UIAlertController.Style.alert)
                                         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                                         self.present(alert, animated: true, completion: nil)

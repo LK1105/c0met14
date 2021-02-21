@@ -26,8 +26,6 @@ Version 3, 29 June 2007 <br />
 @Maverickdev1 - Utility development<br />
 @ModernPwner - CVE (cicuta_virosa)<br />
 @Brandonplank - Sandbox r/w priviliges <br />
-@DaanDH12 - Web Development and READ.ME <br />
-@Mattso - Discord Supporter 
 
 Join us -> https://discord.gg/ey6FAabR46
 

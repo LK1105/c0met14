@@ -27,5 +27,7 @@ Version 3, 29 June 2007 <br />
 @ModernPwner - CVE (cicuta_virosa)<br />
 @Brandonplank - Sandbox r/w priviliges <br />
 
-Join us -> https://discord.gg/N5AwGYPTd8
+Join us -> https://dsc.gg/c0met
+
+
 

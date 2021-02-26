@@ -5,6 +5,9 @@
 Project for the c0met jailbreak. 
 This jailbreak is an open source project.
 
+# What now?
+I guess you can modify it to add the exploit if you feel like it
+
 # DOESN"T WORK
 An expose on c0met,
 It is fake, I built it from the latest fork

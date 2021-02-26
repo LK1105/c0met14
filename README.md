@@ -26,6 +26,7 @@ Version 3, 29 June 2007 <br />
 @Maverickdev1 - Utility development<br />
 @ModernPwner - CVE (cicuta_virosa)<br />
 @Brandonplank - Sandbox r/w priviliges <br />
+@Sakurai07 - Somewhat modification and building <br />
 
 Website - c0met.dev
 Join us -> https://dsc.gg/c0met

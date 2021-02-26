@@ -5,6 +5,11 @@
 Project for the c0met jailbreak. 
 This jailbreak is an open source project.
 
+# DOESN"T WORK
+An expose on c0met,
+It is fake, I built it from the latest fork
+the JB doesn't work
+
 # Disclaimer
 It probably won't work,
 I just patched what I would from the fork then cross compiled on linux

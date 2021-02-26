@@ -7,7 +7,7 @@ This jailbreak is an open source project.
 
 # Disclaimer
 It probably won't work,
-I just patched what I would from teh fork then cross compiled on linux
+I just patched what I would from the fork then cross compiled on linux
 
 ### Supported devices:
 

@@ -5,6 +5,10 @@
 Project for the c0met jailbreak. 
 This jailbreak is an open source project.
 
+# Disclaimer
+It probably won't work,
+I just patched what I would from teh fork then cross compiled on linux
+
 ### Supported devices:
 
 All iOS devices from 14.0 - 14.3
